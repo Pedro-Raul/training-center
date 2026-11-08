@@ -8,7 +8,7 @@ public class ContestId {
 
     private final String value;
 
-    public ContestId (String value){
+    private ContestId (String value){
         if (value == null || value.isBlank()) {
             throw new DomainException("ContestId no puede estar vacío");
         }
