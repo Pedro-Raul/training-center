@@ -1,8 +1,10 @@
 package co.ufps.trainingcenter.account;
 
 import co.ufps.trainingcenter.DomainException;
+import co.ufps.trainingcenter.activity.DailyActivityId;
 
 import java.util.Objects;
+import java.util.UUID;
 
 public final class UserProfileId {
         private final String value;
@@ -12,6 +14,15 @@ public final class UserProfileId {
                 throw new DomainException("El profileId no puede estar vacío");
             this.value = value.strip();
         }
+    public static UserProfileId generate() {
+        return new UserProfileId(UUID.randomUUID().toString());
+    }
+
+    public static UserProfileId of(String value) {
+        return new UserProfileId(value);
+    }
+
+    public String value() {return value;}
 
     @Override
     public boolean equals(Object o) {

@@ -8,31 +8,42 @@ import java.util.Objects;
 public class UserProfile {
 
     private UserProfileId profileId;
-    private String userId;
+    private UserId userId;
     private int rating ;
     private int currentStreak;
     private int maxStreak ;
-    private LocalDate LastActivityDate ;
+    private LocalDate lastActivityDate ;
     private int problemsSolvedCount ;
 
-    private UserProfile(UserProfileId profileId, String userId) {
+    private UserProfile(UserProfileId profileId, UserId userId , int rating, int currentStreak, int maxStreak, LocalDate lastActivityDate, int problemsSolvedCount)  {
         this.profileId = Objects.requireNonNull(profileId, "profileId es obligatorio");
-        if (userId == null || userId.isBlank())
-            throw new DomainException("El nombre del perfil es obligatorio");
-        this.userId = userId.strip();
+        this.userId = Objects.requireNonNull(userId, "userId es obligatorio");
+
+        if (rating < 0)throw new DomainException("rating no puede ser negativo");
+        if (currentStreak < 0) throw new DomainException("currentStreak no puede ser negativo");
+        if (maxStreak < currentStreak)throw new DomainException("maxStreak no puede ser menor que currentStreak");
+        if (problemsSolvedCount < 0) throw new DomainException("problemsSolvedCount no puede ser negativo");
+
         this.rating = rating;
-        this.currentStreak = currentStreak;
+        this.currentStreak =currentStreak;
         this.maxStreak = maxStreak;
-        this.LastActivityDate = LocalDate.now();
+        this.lastActivityDate = lastActivityDate;
         this.problemsSolvedCount = problemsSolvedCount;
     }
 
+    public static UserProfile generate(UserId userId){
+        return new UserProfile(UserProfileId.generate(),userId, 0,0,0, null,0);
+    }
+
+    public static UserProfile restore(UserProfileId profileId, UserId userId , int rating, int currentStreak, int maxStreak, LocalDate lastActivityDate, int problemsSolvedCount){
+        return new UserProfile(profileId,userId,rating,currentStreak,maxStreak,lastActivityDate,problemsSolvedCount);
+    }
     // Getters
     public UserProfileId getProfileId() {return profileId;}
     public int getCurrentStreak() { return currentStreak;}
-    public String getUserId() {return userId;}
+    public UserId getUserId() {return userId;}
     public int getRating() { return rating;}
     public int getMaxStreak() {return maxStreak;}
-    public LocalDate getLastActivityDate() {return LastActivityDate;}
+    public LocalDate getLastActivityDate() {return lastActivityDate;}
     public int getProblemsSolvedCount() { return problemsSolvedCount;}
 }
