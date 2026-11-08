@@ -37,7 +37,6 @@ public class User {
         return user;
     }
 
-
     public UserId getId() { return id; }
     public String getUsername() { return username; }
     public String getEmail() { return email; }
