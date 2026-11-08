@@ -9,10 +9,8 @@
         <module name="trainingcenter-domain" />
         <module name="trainingcenter-api" />
         <module name="trainingcenter-infrastructure" />
+        <module name="trainingcenter-application" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="trainingcenter-application" target="1.8" />
-    </bytecodeTargetLevel>
   </component>
 </project>

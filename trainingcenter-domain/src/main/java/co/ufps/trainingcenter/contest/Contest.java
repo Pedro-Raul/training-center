@@ -13,7 +13,7 @@ public class Contest {
     private Status status;
     private boolean isCustom;
 
-    public Contest(ContestId id, string title, string platform, string url,
+    public Contest(ContestId id, String title, String platform, String url,
                    LocalDateTime startTime,int durationSeconds, Status status, boolean isCustom){
 
         this.id=id;
