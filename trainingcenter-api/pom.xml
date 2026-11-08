@@ -12,6 +12,7 @@
   </parent>
 
   <artifactId>trainingcenter-api</artifactId>
+  <packaging>quarkus</packaging>
   <name>Training Center - API</name>
 
   <dependencies>
@@ -24,4 +25,21 @@
       <artifactId>trainingcenter-infrastructure</artifactId>
     </dependency>
   </dependencies>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>${quarkus.platform.group-id}</groupId>
+        <artifactId>quarkus-maven-plugin</artifactId>
+        <version>${quarkus.platform.version}</version>
+        <extensions>true</extensions>
+        <executions>
+          <execution>
+            <goals>
+              <goal>build</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
 </project>
