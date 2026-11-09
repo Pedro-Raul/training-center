@@ -1,3 +1,10 @@
+package co.ufps.trainingcenter.account;
+
+import co.ufps.trainingcenter.account.UserId;
+import co.ufps.trainingcenter.account.Verdict;
+import co.ufps.trainingcenter.account.UserSubmissionId;
+import co.ufps.trainingcenter.exercise.ExerciseId;
+
 import java.time.LocalDateTime;
 
 public class UserSubmission {
@@ -9,7 +16,7 @@ public class UserSubmission {
     private int executionTimeMs;
     private LocalDateTime submittedAt;
 
-    public UserSubmission(UserSubmissionId id, UserId userId, String exerciseId,
+    public UserSubmission(UserSubmissionId id, UserId userId, ExerciseId exerciseId,
                           Verdict verdict, String language, int executionTimeMs,
                           LocalDateTime submittedAt) {
         this.id = id;

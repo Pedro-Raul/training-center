@@ -1,3 +1,8 @@
+package co.ufps.trainingcenter.account;
+
+import java.util.Objects;
+import java.util.UUID;
+
 public class UserSubmissionId {
     private final String value;
 
