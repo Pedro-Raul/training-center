@@ -20,13 +20,13 @@ public class DailyActivity {
         this.activityDate = Objects.requireNonNull(activityDate, "activityDate es obligatorio");
 
         if (problemsSolved < 0) {
-            throw new IllegalArgumentException("problemsSolved no puede ser negativo");
+            throw new DomainException("problemsSolved no puede ser negativo");
         }
         if (totalSubmissions < 0) {
-            throw new IllegalArgumentException("totalSubmissions no puede ser negativo");
+            throw new DomainException("totalSubmissions no puede ser negativo");
         }
         if (problemsSolved > totalSubmissions) {
-            throw new IllegalArgumentException("problemsSolved no puede superar totalSubmissions");
+            throw new DomainException("problemsSolved no puede superar totalSubmissions");
         }
         this.problemsSolved = problemsSolved;
         this.totalSubmissions = totalSubmissions;
@@ -38,6 +38,17 @@ public class DailyActivity {
 
     public static DailyActivity restore(DailyActivityId activityId, UserId userId, LocalDate activityDate, int problemsSolved, int totalSubmissions) {
         return new DailyActivity(activityId, userId, activityDate, problemsSolved, totalSubmissions);
+    }
+
+    public static DailyActivity startOf(UserId userId, LocalDate activityDate) {
+        return register(userId, activityDate, 0, 0);
+    }
+
+    public void recordSubmission(boolean solved) {
+        totalSubmissions++;
+        if (solved) {
+            problemsSolved++;
+        }
     }
 
     public DailyActivityId getActivityId() {return activityId;}

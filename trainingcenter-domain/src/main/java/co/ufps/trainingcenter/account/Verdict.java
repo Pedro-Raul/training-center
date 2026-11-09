@@ -1,4 +1,4 @@
-
+package co.ufps.trainingcenter.account;
 public enum Verdict {
     ACCEPTED,
     WRONG_ANSWER,
