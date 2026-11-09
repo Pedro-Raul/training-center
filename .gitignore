@@ -33,3 +33,5 @@ bin/
 target/
 .idea/
 *.iml
+
+/trainingcenter-api/src/main/resources/application.properties
