@@ -23,4 +23,36 @@ public class Exercise {
         this.externalUrl = externalUrl;
         this.createdAt = LocalDateTime.now();
     }
+
+    public ExerciseId getId() {
+        return id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getTopic() {
+        return topic;
+    }
+
+    public Difficulty getDifficulty() {
+        return difficulty;
+    }
+
+    public int getDifficultyRating() {
+        return difficultyRating;
+    }
+
+    public String getPlatform() {
+        return platform;
+    }
+
+    public String getExternalUrl() {
+        return externalUrl;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
 }
