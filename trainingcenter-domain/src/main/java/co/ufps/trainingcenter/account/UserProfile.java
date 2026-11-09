@@ -38,6 +38,7 @@ public class UserProfile {
     public static UserProfile restore(UserProfileId profileId, UserId userId , int rating, int currentStreak, int maxStreak, LocalDate lastActivityDate, int problemsSolvedCount){
         return new UserProfile(profileId,userId,rating,currentStreak,maxStreak,lastActivityDate,problemsSolvedCount);
     }
+
     // Getters
     public UserProfileId getProfileId() {return profileId;}
     public int getCurrentStreak() { return currentStreak;}
@@ -46,4 +47,28 @@ public class UserProfile {
     public int getMaxStreak() {return maxStreak;}
     public LocalDate getLastActivityDate() {return lastActivityDate;}
     public int getProblemsSolvedCount() { return problemsSolvedCount;}
+
+    public void recordSolvedActivity(LocalDate activityDate) {
+        Objects.requireNonNull(activityDate, "activityDate es obligatoria");
+
+        if (lastActivityDate != null && activityDate.isBefore(lastActivityDate)) {
+            throw new DomainException(
+                    "No se puede registrar actividad anterior a la última fecha registrada"
+            );
+        }
+
+        if (activityDate.equals(lastActivityDate)) {
+            return;
+        }
+
+        if (lastActivityDate == null
+                || !activityDate.equals(lastActivityDate.plusDays(1))) {
+            currentStreak = 1;
+        } else {
+            currentStreak++;
+        }
+
+        maxStreak = Math.max(maxStreak, currentStreak);
+        lastActivityDate = activityDate;
+    }
 }
