@@ -4,6 +4,7 @@ import co.ufps.trainingcenter.DomainException;
 import co.ufps.trainingcenter.account.UserId;
 import co.ufps.trainingcenter.account.UserProfile;
 import co.ufps.trainingcenter.activity.DailyActivity;
+import co.ufps.trainingcenter.application.port.in.GetDailyActivityMapUseCase;
 import co.ufps.trainingcenter.application.port.in.RecordSubmissionUseCase;
 import co.ufps.trainingcenter.application.port.out.DailyActivityRepository;
 import co.ufps.trainingcenter.application.port.out.UserProfileRepository;
@@ -12,7 +13,7 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
 
-public class DailyActivityService implements RecordSubmissionUseCase {
+public class DailyActivityService implements RecordSubmissionUseCase, GetDailyActivityMapUseCase {
 
     private final DailyActivityRepository dailyActivityRepository;
     private final UserProfileRepository userProfileRepository;
@@ -49,8 +50,14 @@ public class DailyActivityService implements RecordSubmissionUseCase {
 
         return savedActivity;
     }
-
+    @Override
     public List<DailyActivity> getActivityMap(UserId userId, LocalDate from, LocalDate to) {
+        if (userId == null) {
+            throw new DomainException("El usuario es obligatorio");
+        }
+        if (from == null || to == null) {
+            throw new DomainException("El rango de fechas es obligatorio");
+        }
         if (from.isAfter(to)) {
             throw new DomainException("from no puede ser posterior a to");
         }
