@@ -45,6 +45,12 @@ public class Contest {
         }
     }
 
+    public static Contest restore(ContestId id, String title, String platform, String url,
+                                  java.time.LocalDateTime startTime, int durationSeconds,
+                                  Status status, boolean isCustom) {
+        return new Contest(id, title, platform, url, startTime, durationSeconds, status, isCustom);
+    }
+
     public ContestId getId() {
         return id;
     }
