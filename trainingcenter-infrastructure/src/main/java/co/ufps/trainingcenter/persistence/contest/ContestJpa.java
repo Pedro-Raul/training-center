@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "CONTEST")
+@Table(name = "contests")
 public class ContestJpa {
 
     @Id
@@ -27,7 +27,7 @@ public class ContestJpa {
     @Column(name = "duration_seconds")
     private int durationSeconds;
 
-    @Enumerated(EnumType.STRING) // <-- Guarda el nombre del Enum en texto ("ACTIVE", "FINISHED")
+    @Enumerated(EnumType.STRING)
     @Column(length = 20)
     private Status status;
 
