@@ -1,4 +1,4 @@
-package co.ufps.trainingcenter.application.port;
+package co.ufps.trainingcenter.application.port.out;
 
 import co.ufps.trainingcenter.account.UserId;
 import co.ufps.trainingcenter.activity.DailyActivity;

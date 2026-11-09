@@ -2,7 +2,7 @@ package co.ufps.trainingcenter.application.service;
 
 import co.ufps.trainingcenter.account.UserId;
 import co.ufps.trainingcenter.activity.DailyActivity;
-import co.ufps.trainingcenter.application.port.DailyActivityRepository;
+import co.ufps.trainingcenter.application.port.out.DailyActivityRepository;
 import co.ufps.trainingcenter.DomainException;
 
 import java.time.LocalDate;
