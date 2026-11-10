@@ -1,9 +1,14 @@
 package co.ufps.trainingcenter.application.port.out;
 
 import co.ufps.trainingcenter.account.User;
+import co.ufps.trainingcenter.account.UserId;
 import co.ufps.trainingcenter.account.UserProfile;
 
+import java.util.Optional;
+
 public interface UserRepository {
+
+    Optional<User> findById(UserId userId);
 
     boolean existsByEmail(String email);
 

@@ -24,6 +24,28 @@ public class Exercise {
         this.createdAt = LocalDateTime.now();
     }
 
+    /**
+     * Factory method para crear un nuevo ejercicio.
+     */
+    public static Exercise create(String title, String topic, Difficulty difficulty,
+                                  int difficultyRating, String platform, String externalUrl) {
+        return new Exercise(ExerciseId.generate(), title, topic, difficulty,
+                difficultyRating, platform, externalUrl);
+    }
+
+    /**
+     * Factory method para restaurar un ejercicio desde la base de datos
+     * (preserva la fecha de creaci\u00f3n original).
+     */
+    public static Exercise restore(ExerciseId id, String title, String topic, Difficulty difficulty,
+                                   int difficultyRating, String platform, String externalUrl,
+                                   LocalDateTime createdAt) {
+        Exercise exercise = new Exercise(id, title, topic, difficulty,
+                difficultyRating, platform, externalUrl);
+        exercise.createdAt = createdAt;
+        return exercise;
+    }
+
     public ExerciseId getId() {
         return id;
     }

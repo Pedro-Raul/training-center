@@ -13,13 +13,17 @@ public class User {
     private Role role;
     private final LocalDateTime createdAt;
 
-    private User(UserId id, String username, String email, String passwordHash,Role role) {
+    private User(UserId id, String username, String email, String passwordHash, Role role) {
+        this(id, username, email, passwordHash, role, LocalDateTime.now());
+    }
+
+    private User(UserId id, String username, String email, String passwordHash, Role role, LocalDateTime createdAt) {
         this.id = Objects.requireNonNull(id, "id");
         this.username = Objects.requireNonNull(username, "username");
         this.email = Objects.requireNonNull(email, "email");
         this.passwordHash = Objects.requireNonNull(passwordHash, "passwordHash es obligatorio");
         this.role = Objects.requireNonNull(role, "role");
-        this.createdAt = LocalDateTime.now();
+        this.createdAt = Objects.requireNonNullElseGet(createdAt, LocalDateTime::now);
     }
 
     public static User register(String email, String username, String passwordHash, String initialProfileName) {
@@ -35,6 +39,10 @@ public class User {
 
         User user = new User(UserId.generate(),username, email, passwordHash, Role.USER);
         return user;
+    }
+
+    public static User restore(UserId id, String email, String username, String passwordHash, Role role, LocalDateTime createdAt) {
+        return new User(id, username, email, passwordHash, role, createdAt);
     }
 
     public UserId getId() { return id; }
