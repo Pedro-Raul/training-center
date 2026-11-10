@@ -9,9 +9,15 @@ import co.ufps.trainingcenter.application.port.in.RegisterUserCommand;
 import co.ufps.trainingcenter.application.port.in.RegisterUserUseCase;
 import co.ufps.trainingcenter.application.port.out.PasswordHasher;
 import co.ufps.trainingcenter.application.port.out.UserRepository;
+import jakarta.enterprise.context.ApplicationScoped;
 
 import java.util.Objects;
 
+/**
+ * Servicio de registro de usuarios.
+ * Bean CDI @ApplicationScoped para que inyecte repositorios automáticamente.
+ */
+@ApplicationScoped
 public final class RegisterUserService implements RegisterUserUseCase {
 
     private final UserRepository userRepository;

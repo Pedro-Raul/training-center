@@ -4,16 +4,23 @@ import co.ufps.trainingcenter.application.port.in.ContestUseCase;
 import co.ufps.trainingcenter.application.port.out.ContestRepository;
 import co.ufps.trainingcenter.contest.Contest;
 import co.ufps.trainingcenter.contest.Status;
+import jakarta.enterprise.context.ApplicationScoped;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Objects;
 
+/**
+ * Servicio de gestión de concursos.
+ * Bean CDI @ApplicationScoped para que inyecte repositorios automáticamente.
+ */
+@ApplicationScoped
 public class ContestService implements ContestUseCase {
 
     private final ContestRepository contestRepository;
 
     public ContestService(ContestRepository contestRepository) {
-        this.contestRepository = contestRepository;
+        this.contestRepository = Objects.requireNonNull(contestRepository);
     }
 
     @Override

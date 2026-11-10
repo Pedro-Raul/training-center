@@ -43,6 +43,15 @@
       <groupId>org.eclipse.microprofile.config</groupId>
       <artifactId>microprofile-config-api</artifactId>
     </dependency>
+    <!-- Quarkus extensions para JPA/ORM y base de datos -->
+    <dependency>
+      <groupId>io.quarkus</groupId>
+      <artifactId>quarkus-hibernate-orm</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>io.quarkus</groupId>
+      <artifactId>quarkus-jdbc-mariadb</artifactId>
+    </dependency>
     <!-- BCrypt para hashing de contraseñas -->
     <dependency>
       <groupId>at.favre.lib</groupId>

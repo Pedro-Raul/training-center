@@ -3,12 +3,15 @@ package co.ufps.trainingcenter.application.service;
 import co.ufps.trainingcenter.application.port.in.GetExercisesUseCase;
 import co.ufps.trainingcenter.application.port.out.ExerciseRepository;
 import co.ufps.trainingcenter.exercise.Exercise;
+import jakarta.enterprise.context.ApplicationScoped;
 
 import java.util.List;
 
 /**
  * Servicio para consulta de ejercicios.
+ * Bean CDI @ApplicationScoped para que inyecte repositorios automáticamente.
  */
+@ApplicationScoped
 public class ExerciseService implements GetExercisesUseCase {
 
     private final ExerciseRepository exerciseRepository;

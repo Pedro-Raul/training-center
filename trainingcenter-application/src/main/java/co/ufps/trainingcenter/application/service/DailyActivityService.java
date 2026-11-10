@@ -8,11 +8,17 @@ import co.ufps.trainingcenter.application.port.in.GetDailyActivityMapUseCase;
 import co.ufps.trainingcenter.application.port.in.RecordSubmissionUseCase;
 import co.ufps.trainingcenter.application.port.out.DailyActivityRepository;
 import co.ufps.trainingcenter.application.port.out.UserProfileRepository;
+import jakarta.enterprise.context.ApplicationScoped;
 
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * Servicio de actividad diaria y registro de submissions.
+ * Bean CDI @ApplicationScoped para que inyecte repositorios automáticamente.
+ */
+@ApplicationScoped
 public class DailyActivityService implements RecordSubmissionUseCase, GetDailyActivityMapUseCase {
 
     private final DailyActivityRepository dailyActivityRepository;

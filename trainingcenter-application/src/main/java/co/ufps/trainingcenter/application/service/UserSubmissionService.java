@@ -2,19 +2,25 @@ package co.ufps.trainingcenter.application.service;
 
 import co.ufps.trainingcenter.DomainException;
 import co.ufps.trainingcenter.account.SubmissionCountByDate;
-import co.ufps.trainingcenter.application.port.in.GetSubmissionsByDateUseCase;
-import co.ufps.trainingcenter.application.port.out.UserProfileRepository;
-import co.ufps.trainingcenter.application.port.out.UserSubmissionRepository;
 import co.ufps.trainingcenter.account.UserId;
+import co.ufps.trainingcenter.application.port.in.GetSubmissionsByDateUseCase;
+import co.ufps.trainingcenter.application.port.out.UserSubmissionRepository;
+import jakarta.enterprise.context.ApplicationScoped;
+
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * Servicio de consultas de submissions por fecha.
+ * Bean CDI @ApplicationScoped para que inyecte repositorios automáticamente.
+ */
+@ApplicationScoped
 public class UserSubmissionService implements GetSubmissionsByDateUseCase {
 
     private final UserSubmissionRepository userSubmissionRepository;
 
-    public UserSubmissionService(UserSubmissionRepository userSubmissionRepository, UserProfileRepository userProfileRepository) {
+    public UserSubmissionService(UserSubmissionRepository userSubmissionRepository) {
         this.userSubmissionRepository = Objects.requireNonNull(userSubmissionRepository);
     }
 
