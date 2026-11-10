@@ -1,15 +1,14 @@
 package co.ufps.trainingcenter.application.service;
 
+import co.ufps.trainingcenter.application.port.in.ContestUseCase;
 import co.ufps.trainingcenter.application.port.out.ContestRepository;
 import co.ufps.trainingcenter.contest.Contest;
 import co.ufps.trainingcenter.contest.Status;
-import jakarta.enterprise.context.ApplicationScoped;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
-@ApplicationScoped
-public class ContestService {
+public class ContestService implements ContestUseCase {
 
     private final ContestRepository contestRepository;
 
@@ -17,10 +16,12 @@ public class ContestService {
         this.contestRepository = contestRepository;
     }
 
+    @Override
     public List<Contest> getActiveContests() {
         return contestRepository.findByStatus(Status.ACTIVE);
     }
 
+    @Override
     public void updateStatuses() {
         List<Contest> upcoming = contestRepository.findByStatus(Status.UPCOMING);
         List<Contest> active = contestRepository.findByStatus(Status.ACTIVE);

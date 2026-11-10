@@ -14,7 +14,7 @@
   <artifactId>trainingcenter-infrastructure</artifactId>
   <name>Training Center - Infrastructure</name>
 
-  <dependencies>
+    <dependencies>
     <dependency>
       <groupId>${project.groupId}</groupId>
       <artifactId>trainingcenter-domain</artifactId>
@@ -34,6 +34,12 @@
     <dependency>
       <groupId>jakarta.enterprise</groupId>
       <artifactId>jakarta.enterprise.cdi-api</artifactId>
+    </dependency>
+    <!-- BCrypt para hashing de contraseñas -->
+    <dependency>
+      <groupId>at.favre.lib</groupId>
+      <artifactId>bcrypt</artifactId>
+      <version>0.10.2</version>
     </dependency>
 
   </dependencies>

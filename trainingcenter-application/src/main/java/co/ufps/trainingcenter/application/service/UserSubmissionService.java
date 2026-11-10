@@ -3,6 +3,7 @@ package co.ufps.trainingcenter.application.service;
 import co.ufps.trainingcenter.DomainException;
 import co.ufps.trainingcenter.account.SubmissionCountByDate;
 import co.ufps.trainingcenter.application.port.in.GetSubmissionsByDateUseCase;
+import co.ufps.trainingcenter.application.port.out.UserProfileRepository;
 import co.ufps.trainingcenter.application.port.out.UserSubmissionRepository;
 import co.ufps.trainingcenter.account.UserId;
 import java.time.LocalDate;
@@ -13,7 +14,7 @@ public class UserSubmissionService implements GetSubmissionsByDateUseCase {
 
     private final UserSubmissionRepository userSubmissionRepository;
 
-    public UserSubmissionService(UserSubmissionRepository userSubmissionRepository) {
+    public UserSubmissionService(UserSubmissionRepository userSubmissionRepository, UserProfileRepository userProfileRepository) {
         this.userSubmissionRepository = Objects.requireNonNull(userSubmissionRepository);
     }
 
