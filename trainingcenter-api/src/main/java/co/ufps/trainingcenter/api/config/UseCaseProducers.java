@@ -6,6 +6,10 @@ import co.ufps.trainingcenter.application.service.DailyActivityService;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.enterprise.inject.Produces;
 import jakarta.inject.Singleton;
+import co.ufps.trainingcenter.application.port.out.UserSubmissionRepository;
+import co.ufps.trainingcenter.application.service.UserSubmissionService;
+import co.ufps.trainingcenter.application.port.out.UserSubmissionRepository;
+import co.ufps.trainingcenter.application.service.UserSubmissionService;
 
 @ApplicationScoped
 public class UseCaseProducers {
@@ -18,4 +22,11 @@ public class UseCaseProducers {
     ) {
         return new DailyActivityService(dailyActivityRepository, userProfileRepository);
     }
+
+    @Produces
+    @Singleton
+    public UserSubmissionService userSubmissionService(UserSubmissionRepository userSubmissionRepository) {
+        return new UserSubmissionService(userSubmissionRepository);
+    }
+
 }
