@@ -2,83 +2,58 @@ package co.ufps.trainingcenter.api.codeforces;
 
 import co.ufps.trainingcenter.account.ExternalAccount;
 import co.ufps.trainingcenter.account.UserId;
-import co.ufps.trainingcenter.application.port.in.CompleteCodeforcesLinkUseCase;
 import co.ufps.trainingcenter.application.port.in.GetCodeforcesAccountUseCase;
 import co.ufps.trainingcenter.application.port.in.StartCodeforcesLinkUseCase;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.GET;
+import jakarta.ws.rs.NotFoundException;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.Produces;
-import jakarta.ws.rs.QueryParam;
 import jakarta.ws.rs.core.MediaType;
-import jakarta.ws.rs.core.Response;
 
-import java.util.Map;
-import java.util.Optional;
+import java.time.LocalDateTime;
 
-/**
- * Endpoint REST para vincular cuentas de Codeforces vía OIDC.
- */
-@Path("/api/codeforces")
+@Path("/users/{userId}/codeforces")
 @Produces(MediaType.APPLICATION_JSON)
 public class CodeforcesLinkResource {
 
-    public record CodeforcesAccountResponse(
-            String userId,
-            String platform,
-            String externalId,
-            String handle,
-            Integer rating) {
+    public record LinkStartResponse(String authorizationUrl) {
+    }
 
-        static CodeforcesAccountResponse from(ExternalAccount account) {
-            return new CodeforcesAccountResponse(
-                    account.getUserId().value(),
+    public record ExternalAccountResponse(String platform, String handle, int rating,
+                                          LocalDateTime lastSyncedAt) {
+
+        static ExternalAccountResponse from(ExternalAccount account) {
+            return new ExternalAccountResponse(
                     account.getPlatform(),
-                    account.getExternalId(),
                     account.getHandle(),
-                    account.getPlatformRating());
+                    account.getPlatformRating(),
+                    account.getLastSyncedAt());
         }
     }
 
     private final StartCodeforcesLinkUseCase startLink;
-    private final CompleteCodeforcesLinkUseCase completeLink;
-    private final GetCodeforcesAccountUseCase getCodeforcesAccount;
+    private final GetCodeforcesAccountUseCase getAccount;
 
     @Inject
     public CodeforcesLinkResource(StartCodeforcesLinkUseCase startLink,
-                                  CompleteCodeforcesLinkUseCase completeLink,
-                                  GetCodeforcesAccountUseCase getCodeforcesAccount) {
+                                  GetCodeforcesAccountUseCase getAccount) {
         this.startLink = startLink;
-        this.completeLink = completeLink;
-        this.getCodeforcesAccount = getCodeforcesAccount;
+        this.getAccount = getAccount;
     }
 
     @POST
-    @Path("/link/{userId}")
-    public Response startLink(@PathParam("userId") String userId) {
-        String authorizationUrl = startLink.startLink(UserId.of(userId));
-        return Response.ok(Map.of("authorizationUrl", authorizationUrl)).build();
+    @Path("/link")
+    public LinkStartResponse start(@PathParam("userId") String userId) {
+        return new LinkStartResponse(startLink.startLink(UserId.of(userId)));
     }
 
     @GET
-    @Path("/callback")
-    public Response callback(@QueryParam("code") String code,
-                             @QueryParam("state") String state) {
-        ExternalAccount account = completeLink.completeLink(code, state);
-        return Response.ok(CodeforcesAccountResponse.from(account)).build();
-    }
-
-    @GET
-    @Path("/account/{userId}")
-    public Response getAccount(@PathParam("userId") String userId) {
-        Optional<ExternalAccount> account = getCodeforcesAccount.getByUserId(UserId.of(userId));
-        if (account.isEmpty()) {
-            return Response.status(Response.Status.NOT_FOUND)
-                    .entity(Map.of("error", "No se encontró cuenta de Codeforces para este usuario"))
-                    .build();
-        }
-        return Response.ok(CodeforcesAccountResponse.from(account.get())).build();
+    public ExternalAccountResponse get(@PathParam("userId") String userId) {
+        return getAccount.getByUserId(UserId.of(userId))
+                .map(ExternalAccountResponse::from)
+                .orElseThrow(NotFoundException::new);
     }
 }

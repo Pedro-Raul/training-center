@@ -13,7 +13,6 @@ import co.ufps.trainingcenter.application.port.out.CodeforcesOidcClient;
 import co.ufps.trainingcenter.application.port.out.ExternalAccountRepository;
 import co.ufps.trainingcenter.application.port.out.OidcStateStore;
 import co.ufps.trainingcenter.application.port.out.PendingLink;
-import jakarta.enterprise.context.ApplicationScoped;
 
 import java.security.SecureRandom;
 import java.time.Duration;
@@ -21,6 +20,7 @@ import java.time.Instant;
 import java.util.Base64;
 import java.util.Objects;
 import java.util.Optional;
+import jakarta.enterprise.context.ApplicationScoped;
 
 /**
  * Servicio de vinculación de cuentas de Codeforces.
