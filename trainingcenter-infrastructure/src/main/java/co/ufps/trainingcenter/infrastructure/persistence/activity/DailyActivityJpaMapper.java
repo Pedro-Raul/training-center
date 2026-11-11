@@ -3,10 +3,7 @@ package co.ufps.trainingcenter.infrastructure.persistence.activity;
 import co.ufps.trainingcenter.domain.account.UserId;
 import co.ufps.trainingcenter.domain.activity.DailyActivity;
 import co.ufps.trainingcenter.domain.activity.DailyActivityId;
-<<<<<<< HEAD
-=======
-import co.ufps.trainingcenter.persistence.activity.DailyActivityJpa;
->>>>>>> 569d56e (Fixing Bugs)
+import co.ufps.trainingcenter.infrastructure.external.codeforces.*;
 
 public final class DailyActivityJpaMapper {
 

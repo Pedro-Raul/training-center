@@ -2,10 +2,7 @@ package co.ufps.trainingcenter.infrastructure.persistence.contest;
 
 import co.ufps.trainingcenter.domain.contest.Contest;
 import co.ufps.trainingcenter.domain.contest.ContestId;
-<<<<<<< HEAD
-=======
 import co.ufps.trainingcenter.infrastructure.persistence.contest.ContestJpa;
->>>>>>> 569d56e (Fixing Bugs)
 
 public class ContestJpaMapper {
 
