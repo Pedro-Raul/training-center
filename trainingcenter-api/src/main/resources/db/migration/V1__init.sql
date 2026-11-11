@@ -1,0 +1,74 @@
+-- ============================================================
+-- V1__init.sql — Baseline de Flyway (versión 1)
+-- ============================================================
+-- Este script NO se ejecuta porque quarkus.flyway.baseline-version=1
+-- marca este punto como baseline. Sirve como documentación del
+-- esquema actual.
+--
+-- Si las tablas aún no existen en producción, reemplaza este archivo
+-- por el export de estructura de phpMyAdmin (CREATE TABLE ...) para
+-- que Flyway pueda crearlas desde cero en entornos limpios.
+-- ============================================================
+
+-- Tabla: users
+--   user_id           VARCHAR(36)      PK
+--   username          VARCHAR(50)      NOT NULL UNIQUE (uk_users_username)
+--   email             VARCHAR(255)     NOT NULL UNIQUE (uk_users_email)
+--   password_hash     VARCHAR(255)     NOT NULL
+--   role              VARCHAR(20)      NOT NULL
+--   created_at        DATETIME         NOT NULL
+
+-- Tabla: user_profiles
+--   profile_id            VARCHAR(36)  PK
+--   user_id               VARCHAR(36)  NOT NULL
+--   rating                INT           NOT NULL
+--   current_streak        INT           NOT NULL
+--   max_streak            INT           NOT NULL
+--   last_activity_date    DATE
+--   problems_solved_count INT           NOT NULL
+
+-- Tabla: external_accounts
+--   account_id      VARCHAR(36)   PK
+--   user_id         VARCHAR(36)   NOT NULL
+--   platform        VARCHAR(30)   NOT NULL
+--   external_id     VARCHAR(100)  NOT NULL
+--   handle          VARCHAR(100)  NOT NULL
+--   platform_rating INT           NOT NULL
+--   last_synced_at  DATETIME      NOT NULL
+
+-- Tabla: exercises
+--   exercise_id     VARCHAR(36)   PK
+--   title           VARCHAR(255)  NOT NULL
+--   topic           VARCHAR(100)
+--   difficulty      VARCHAR(10)
+--   difficulty_rating INT
+--   platform        VARCHAR(50)
+--   external_url    VARCHAR(500)
+--   created_at      DATETIME
+
+-- Tabla: contests
+--   contest_id        VARCHAR(36)   PK
+--   title             VARCHAR(255)  NOT NULL
+--   platform          VARCHAR(50)
+--   url               VARCHAR(500)
+--   start_time        DATETIME
+--   duration_seconds  INT
+--   status            VARCHAR(20)
+--   is_custom         BOOLEAN
+
+-- Tabla: user_submissions
+--   submission_id     VARCHAR(36)
+--   user_id           VARCHAR(36)
+--   exercise_id       VARCHAR(36)
+--   verdict           VARCHAR(30)
+--   language          VARCHAR(20)
+--   execution_time_ms INT
+--   submitted_at      DATETIME
+
+-- Tabla: daily_activity
+--   activity_id       VARCHAR(36)   PK
+--   user_id           VARCHAR(36)   NOT NULL
+--   activity_date     DATE          NOT NULL
+--   problems_solved   INT           NOT NULL
+--   total_submissions INT           NOT NULL
+--   UNIQUE (user_id, activity_date)  — uk_daily_activity_user_date
