@@ -1,6 +1,8 @@
-package co.ufps.trainingcenter.application.query;
+package co.ufps.trainingcenter.application.service;
 
 import co.ufps.trainingcenter.DomainException;
+import co.ufps.trainingcenter.application.query.PageRequest;
+import co.ufps.trainingcenter.application.query.PageResult;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
