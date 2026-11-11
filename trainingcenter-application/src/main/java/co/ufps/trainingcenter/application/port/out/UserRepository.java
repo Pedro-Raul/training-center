@@ -10,8 +10,13 @@ public interface UserRepository {
 
     Optional<User> findById(UserId userId);
 
+    Optional<User> findByEmail(String email);
+
     boolean existsByEmail(String email);
 
     // guarda el usuario con su perfil o ninguno de los dos
     void save(User user, UserProfile profile);
+
+    // guarda solo el usuario (sin perfil)
+    void save(User user);
 }
