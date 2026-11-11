@@ -4,6 +4,7 @@ import co.ufps.trainingcenter.domain.account.UserId;
 import co.ufps.trainingcenter.domain.activity.DailyActivity;
 import co.ufps.trainingcenter.domain.activity.DailyActivityId;
 import co.ufps.trainingcenter.infrastructure.external.codeforces.*;
+import co.ufps.trainingcenter.infrastructure.persistence.activity.DailyActivityJpa;
 
 public final class DailyActivityJpaMapper {
 

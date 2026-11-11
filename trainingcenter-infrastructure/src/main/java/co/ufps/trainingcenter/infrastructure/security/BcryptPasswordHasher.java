@@ -4,9 +4,7 @@ import at.favre.lib.crypto.bcrypt.BCrypt;
 import co.ufps.trainingcenter.application.port.out.PasswordHasher;
 import jakarta.enterprise.context.ApplicationScoped;
 
-/**
- * Adaptador de hashing de contraseÃ±as usando BCrypt.
- */
+
 @ApplicationScoped
 public class BcryptPasswordHasher implements PasswordHasher {
 
@@ -15,5 +13,12 @@ public class BcryptPasswordHasher implements PasswordHasher {
     @Override
     public String hash(String rawPassword) {
         return BCrypt.withDefaults().hashToString(LOG_ROUNDS, rawPassword.toCharArray());
+    }
+
+    @Override
+    public boolean verify(String rawPassword, String hash) {
+
+        BCrypt.Result result = BCrypt.verifyer().verify(rawPassword.toCharArray(), hash);
+        return result.verified;
     }
 }

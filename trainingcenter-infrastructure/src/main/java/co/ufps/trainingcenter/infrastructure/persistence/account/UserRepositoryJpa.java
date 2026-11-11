@@ -24,22 +24,27 @@ public class UserRepositoryJpa implements UserRepository {
     private EntityManager entityManager;
 
     private final UserJpaMapper mapper = new UserJpaMapper();
+
     public Optional<User> findById(UserId userId) {
         return Optional.ofNullable(entityManager.find(UserJpa.class, userId.value()))
                 .map(mapper::toDomain);
     }
 
     @Override
-    public boolean existsByEmail(String email) {
-        UserJpa found = entityManager
+    public Optional<User> findByEmail(String email) {
+        return entityManager
                 .createQuery(
                         "SELECT u FROM UserJpa u WHERE u.email = :email",
                         UserJpa.class)
                 .setParameter("email", email)
-                .getResultStream()
+                .getResultList().stream()
                 .findFirst()
-                .orElse(null);
-        return found != null;
+                .map(mapper::toDomain);
+    }
+
+    @Override
+    public boolean existsByEmail(String email) {
+        return findByEmail(email).isPresent();
     }
 
     @Override
@@ -47,5 +52,12 @@ public class UserRepositoryJpa implements UserRepository {
     public void save(User user, UserProfile profile) {
         entityManager.persist(mapper.toJpa(user));
         entityManager.persist(mapper.toProfileJpa(profile));
+    }
+
+    @Override
+    @Transactional
+    public void save(User user) {
+        UserJpa entity = mapper.toJpa(user);
+        entityManager.merge(entity);
     }
 }
