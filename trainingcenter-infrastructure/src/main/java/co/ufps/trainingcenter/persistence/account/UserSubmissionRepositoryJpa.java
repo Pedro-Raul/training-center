@@ -1,6 +1,8 @@
 package co.ufps.trainingcenter.persistence.account;
 
+
 import co.ufps.trainingcenter.account.SubmissionCountByDate;
+import co.ufps.trainingcenter.account.UserSubmission;
 import co.ufps.trainingcenter.application.port.out.UserSubmissionRepository;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.persistence.EntityManager;
@@ -42,5 +44,18 @@ public class UserSubmissionRepositoryJpa implements UserSubmissionRepository {
                                 ((Number) r[2]).intValue()),
                         ((Number) r[3]).longValue()))
                 .toList();
+    }
+
+    @Override
+    public void save(UserSubmission submission) {
+        UserSubmissionJpa entity = new UserSubmissionJpa();
+        entity.setSubmissionId(submission.getId().value());
+        entity.setUserId(submission.getUserId().value());
+        entity.setExerciseId(submission.getExerciseId().value());
+        entity.setVerdict(submission.getVerdict());
+        entity.setLanguage(submission.getLanguage());
+        entity.setExecutionTimeMs(submission.getExecutionTimeMs());
+        entity.setSubmittedAt(submission.getSubmittedAt());
+        entityManager.persist(entity);
     }
 }

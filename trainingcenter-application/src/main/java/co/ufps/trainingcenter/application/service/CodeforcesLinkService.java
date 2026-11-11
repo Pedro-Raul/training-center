@@ -13,6 +13,7 @@ import co.ufps.trainingcenter.application.port.out.CodeforcesOidcClient;
 import co.ufps.trainingcenter.application.port.out.ExternalAccountRepository;
 import co.ufps.trainingcenter.application.port.out.OidcStateStore;
 import co.ufps.trainingcenter.application.port.out.PendingLink;
+import jakarta.enterprise.context.ApplicationScoped;
 
 import java.security.SecureRandom;
 import java.time.Duration;
@@ -21,6 +22,11 @@ import java.util.Base64;
 import java.util.Objects;
 import java.util.Optional;
 
+/**
+ * Servicio de vinculación de cuentas de Codeforces.
+ * Bean CDI @ApplicationScoped para que inyecte repositorios automáticamente.
+ */
+@ApplicationScoped
 public class CodeforcesLinkService implements StartCodeforcesLinkUseCase,
         CompleteCodeforcesLinkUseCase, GetCodeforcesAccountUseCase {
 
