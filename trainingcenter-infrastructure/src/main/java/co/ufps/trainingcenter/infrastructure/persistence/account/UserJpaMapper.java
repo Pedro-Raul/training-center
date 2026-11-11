@@ -1,11 +1,8 @@
 package co.ufps.trainingcenter.infrastructure.persistence.account;
-
-<<<<<<< HEAD
 import co.ufps.trainingcenter.domain.account.*;
-=======
+
 import co.ufps.trainingcenter.domain.account.User;
 import co.ufps.trainingcenter.infrastructure.persistence.account.UserJpa;
->>>>>>> 569d56e (Fixing Bugs)
 
 public final class UserJpaMapper {
 

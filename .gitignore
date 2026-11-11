@@ -37,3 +37,7 @@ target/
 /trainingcenter-api/src/main/resources/application.properties
 
 .env
+
+root = true
+[*.{java,xml,properties}]
+charset = utf-8
