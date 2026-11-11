@@ -31,7 +31,7 @@ public class User {
             throw new DomainException("El email es obligatorio");
         }
         if (passwordHash == null || passwordHash.isBlank()) {
-            throw new DomainException("La contraseña es obligatoria");
+            throw new DomainException("La contraseÃ±a es obligatoria");
         }
         if (username == null || username.isBlank()) {
             throw new DomainException("El nombre del perfil es obligatorio");
