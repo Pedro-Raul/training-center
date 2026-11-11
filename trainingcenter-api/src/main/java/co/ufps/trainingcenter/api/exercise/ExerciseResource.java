@@ -1,4 +1,4 @@
-﻿package co.ufps.trainingcenter.api.exercise;
+package co.ufps.trainingcenter.api.exercise;
 
 import co.ufps.trainingcenter.application.port.in.GetExercisesUseCase;
 import co.ufps.trainingcenter.domain.exercise.Difficulty;

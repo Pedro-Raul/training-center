@@ -1,4 +1,4 @@
-﻿package co.ufps.trainingcenter.application.port.out;
+package co.ufps.trainingcenter.application.port.out;
 
 import co.ufps.trainingcenter.domain.account.SubmissionCountByDate;
 import co.ufps.trainingcenter.domain.account.UserSubmission;

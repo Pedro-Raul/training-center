@@ -1,4 +1,4 @@
-﻿package co.ufps.trainingcenter.infrastructure.persistence.account;
+package co.ufps.trainingcenter.infrastructure.persistence.account;
 
 import co.ufps.trainingcenter.domain.account.UserId;
 import co.ufps.trainingcenter.domain.account.UserSubmission;

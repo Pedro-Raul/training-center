@@ -1,4 +1,4 @@
-﻿package co.ufps.trainingcenter.infrastructure.security;
+package co.ufps.trainingcenter.infrastructure.security;
 
 import at.favre.lib.crypto.bcrypt.BCrypt;
 import co.ufps.trainingcenter.application.port.out.PasswordHasher;

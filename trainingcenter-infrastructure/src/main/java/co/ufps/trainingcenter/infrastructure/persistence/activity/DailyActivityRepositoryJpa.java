@@ -1,4 +1,4 @@
-﻿package co.ufps.trainingcenter.infrastructure.persistence.activity;
+package co.ufps.trainingcenter.infrastructure.persistence.activity;
 
 import co.ufps.trainingcenter.domain.account.UserId;
 import co.ufps.trainingcenter.domain.activity.DailyActivity;

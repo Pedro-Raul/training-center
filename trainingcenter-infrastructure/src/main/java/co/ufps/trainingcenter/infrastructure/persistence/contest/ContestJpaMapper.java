@@ -1,4 +1,4 @@
-﻿package co.ufps.trainingcenter.infrastructure.persistence.contest;
+package co.ufps.trainingcenter.infrastructure.persistence.contest;
 
 import co.ufps.trainingcenter.domain.contest.Contest;
 import co.ufps.trainingcenter.domain.contest.ContestId;

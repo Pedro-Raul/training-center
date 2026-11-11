@@ -1,4 +1,4 @@
-﻿
+
 package co.ufps.trainingcenter.infrastructure.persistence.account;
 
 import jakarta.persistence.*;

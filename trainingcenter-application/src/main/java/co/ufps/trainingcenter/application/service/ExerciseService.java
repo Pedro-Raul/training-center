@@ -1,4 +1,4 @@
-﻿package co.ufps.trainingcenter.application.service;
+package co.ufps.trainingcenter.application.service;
 
 import co.ufps.trainingcenter.application.port.in.GetExercisesUseCase;
 import co.ufps.trainingcenter.application.port.out.ExerciseRepository;

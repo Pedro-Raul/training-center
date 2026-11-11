@@ -1,4 +1,4 @@
-﻿package co.ufps.trainingcenter.infrastructure.external.codeforces;
+package co.ufps.trainingcenter.infrastructure.external.codeforces;
 
 import co.ufps.trainingcenter.domain.DomainException;
 import co.ufps.trainingcenter.domain.account.OidcAuthenticationException;

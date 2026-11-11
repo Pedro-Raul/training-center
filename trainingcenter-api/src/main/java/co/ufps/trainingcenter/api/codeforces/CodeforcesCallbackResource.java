@@ -1,4 +1,4 @@
-﻿package co.ufps.trainingcenter.api.codeforces;
+package co.ufps.trainingcenter.api.codeforces;
 
 import co.ufps.trainingcenter.domain.DomainException;
 import co.ufps.trainingcenter.application.port.in.CompleteCodeforcesLinkUseCase;

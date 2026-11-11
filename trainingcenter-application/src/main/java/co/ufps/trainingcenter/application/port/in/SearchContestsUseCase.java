@@ -1,4 +1,4 @@
-﻿package co.ufps.trainingcenter.application.port.in;
+package co.ufps.trainingcenter.application.port.in;
 
 import co.ufps.trainingcenter.application.query.ContestFilter;
 import co.ufps.trainingcenter.application.query.PageRequest;

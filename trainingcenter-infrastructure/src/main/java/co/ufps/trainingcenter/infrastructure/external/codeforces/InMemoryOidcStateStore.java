@@ -1,4 +1,4 @@
-﻿package co.ufps.trainingcenter.infrastructure.external.codeforces;
+package co.ufps.trainingcenter.infrastructure.external.codeforces;
 
 import co.ufps.trainingcenter.application.port.out.OidcStateStore;
 import co.ufps.trainingcenter.application.port.out.PendingLink;

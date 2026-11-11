@@ -1,4 +1,4 @@
-﻿package co.ufps.trainingcenter.api.user;
+package co.ufps.trainingcenter.api.user;
 
 import co.ufps.trainingcenter.domain.account.UserId;
 import co.ufps.trainingcenter.application.port.in.RegisterUserCommand;

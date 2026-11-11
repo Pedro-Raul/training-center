@@ -1,4 +1,4 @@
-﻿package co.ufps.trainingcenter.application.service;
+package co.ufps.trainingcenter.application.service;
 
 import co.ufps.trainingcenter.domain.DomainException;
 import co.ufps.trainingcenter.domain.account.SubmissionCountByDate;

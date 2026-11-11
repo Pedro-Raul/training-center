@@ -1,4 +1,4 @@
-﻿package co.ufps.trainingcenter.api.contest;
+package co.ufps.trainingcenter.api.contest;
 
 import co.ufps.trainingcenter.application.port.in.ContestUseCase;
 import co.ufps.trainingcenter.domain.contest.Contest;

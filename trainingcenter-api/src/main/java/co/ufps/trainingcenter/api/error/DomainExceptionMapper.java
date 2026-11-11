@@ -1,4 +1,4 @@
-﻿package co.ufps.trainingcenter.api.error;
+package co.ufps.trainingcenter.api.error;
 
 import co.ufps.trainingcenter.domain.DomainException;
 import jakarta.ws.rs.core.Response;

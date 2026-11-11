@@ -1,4 +1,4 @@
-﻿package co.ufps.trainingcenter.application.query;
+package co.ufps.trainingcenter.application.query;
 
 import co.ufps.trainingcenter.domain.DomainException;
 

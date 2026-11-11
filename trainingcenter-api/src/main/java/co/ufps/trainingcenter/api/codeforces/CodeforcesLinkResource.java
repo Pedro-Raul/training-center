@@ -1,4 +1,4 @@
-﻿package co.ufps.trainingcenter.api.codeforces;
+package co.ufps.trainingcenter.api.codeforces;
 
 import co.ufps.trainingcenter.domain.account.ExternalAccount;
 import co.ufps.trainingcenter.domain.account.UserId;

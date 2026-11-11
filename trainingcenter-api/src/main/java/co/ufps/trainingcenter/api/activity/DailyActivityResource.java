@@ -1,4 +1,4 @@
-﻿package co.ufps.trainingcenter.api.activity;
+package co.ufps.trainingcenter.api.activity;
 
 import co.ufps.trainingcenter.domain.account.UserId;
 import co.ufps.trainingcenter.domain.activity.DailyActivity;

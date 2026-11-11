@@ -1,4 +1,4 @@
-﻿package co.ufps.trainingcenter.infrastructure.persistence.exercise;
+package co.ufps.trainingcenter.infrastructure.persistence.exercise;
 
 import co.ufps.trainingcenter.domain.exercise.Difficulty;
 import jakarta.persistence.*;

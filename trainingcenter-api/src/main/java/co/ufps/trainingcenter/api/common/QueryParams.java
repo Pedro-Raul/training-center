@@ -1,4 +1,4 @@
-﻿package co.ufps.trainingcenter.api.common;
+package co.ufps.trainingcenter.api.common;
 
 import co.ufps.trainingcenter.domain.DomainException;
 import co.ufps.trainingcenter.application.query.PageRequest;

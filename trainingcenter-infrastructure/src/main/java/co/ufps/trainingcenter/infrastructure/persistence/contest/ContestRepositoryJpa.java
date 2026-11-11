@@ -1,4 +1,4 @@
-﻿package co.ufps.trainingcenter.infrastructure.persistence.contest;
+package co.ufps.trainingcenter.infrastructure.persistence.contest;
 
 import co.ufps.trainingcenter.application.port.out.ContestRepository;
 import co.ufps.trainingcenter.domain.contest.Contest;

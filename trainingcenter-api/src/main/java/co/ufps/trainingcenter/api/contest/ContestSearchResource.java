@@ -1,4 +1,4 @@
-﻿package co.ufps.trainingcenter.api.contest;
+package co.ufps.trainingcenter.api.contest;
 
 import co.ufps.trainingcenter.api.common.PageResponse;
 import co.ufps.trainingcenter.api.common.QueryParams;

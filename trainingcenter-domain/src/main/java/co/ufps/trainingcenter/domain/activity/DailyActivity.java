@@ -1,4 +1,4 @@
-﻿package co.ufps.trainingcenter.domain.activity;
+package co.ufps.trainingcenter.domain.activity;
 
 import co.ufps.trainingcenter.domain.DomainException;
 import co.ufps.trainingcenter.domain.account.UserId;

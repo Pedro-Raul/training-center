@@ -1,4 +1,4 @@
-﻿package co.ufps.trainingcenter.api.submission;
+package co.ufps.trainingcenter.api.submission;
 
 import co.ufps.trainingcenter.domain.account.SubmissionCountByDate;
 import co.ufps.trainingcenter.application.port.in.GetSubmissionsByDateUseCase;

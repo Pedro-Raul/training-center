@@ -1,4 +1,4 @@
-﻿package co.ufps.trainingcenter.api.submission;
+package co.ufps.trainingcenter.api.submission;
 
 import co.ufps.trainingcenter.domain.account.UserId;
 import co.ufps.trainingcenter.domain.account.UserSubmission;
