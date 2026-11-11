@@ -1,7 +1,7 @@
-package co.ufps.trainingcenter.persistence.account;
+﻿package co.ufps.trainingcenter.infrastructure.persistence.account;
 
 
-import co.ufps.trainingcenter.account.Verdict;
+import co.ufps.trainingcenter.domain.account.Verdict;
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
 

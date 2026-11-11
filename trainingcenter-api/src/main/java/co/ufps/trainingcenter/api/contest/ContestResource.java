@@ -1,7 +1,7 @@
-package co.ufps.trainingcenter.api.contest;
+﻿package co.ufps.trainingcenter.api.contest;
 
 import co.ufps.trainingcenter.application.port.in.ContestUseCase;
-import co.ufps.trainingcenter.contest.Contest;
+import co.ufps.trainingcenter.domain.contest.Contest;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 /**
- * Endpoint REST para gestión de concursos.
+ * Endpoint REST para gestiÃ³n de concursos.
  */
 @Path("/api/contests")
 @Produces(MediaType.APPLICATION_JSON)

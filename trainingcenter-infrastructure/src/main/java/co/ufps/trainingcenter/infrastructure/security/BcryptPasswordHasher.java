@@ -1,11 +1,11 @@
-package co.ufps.trainingcenter.security;
+﻿package co.ufps.trainingcenter.infrastructure.security;
 
 import at.favre.lib.crypto.bcrypt.BCrypt;
 import co.ufps.trainingcenter.application.port.out.PasswordHasher;
 import jakarta.enterprise.context.ApplicationScoped;
 
 /**
- * Adaptador de hashing de contraseñas usando BCrypt.
+ * Adaptador de hashing de contraseÃ±as usando BCrypt.
  */
 @ApplicationScoped
 public class BcryptPasswordHasher implements PasswordHasher {

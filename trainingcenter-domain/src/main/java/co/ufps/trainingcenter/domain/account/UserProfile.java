@@ -1,6 +1,6 @@
-package co.ufps.trainingcenter.account;
+﻿package co.ufps.trainingcenter.domain.account;
 
-import co.ufps.trainingcenter.DomainException;
+import co.ufps.trainingcenter.domain.DomainException;
 
 import java.time.LocalDate;
 import java.util.Objects;
@@ -53,7 +53,7 @@ public class UserProfile {
 
         if (lastActivityDate != null && activityDate.isBefore(lastActivityDate)) {
             throw new DomainException(
-                    "No se puede registrar actividad anterior a la última fecha registrada"
+                    "No se puede registrar actividad anterior a la Ãºltima fecha registrada"
             );
         }
 

@@ -1,13 +1,13 @@
-package co.ufps.trainingcenter.persistence.account;
+﻿package co.ufps.trainingcenter.infrastructure.persistence.account;
 
 
-import co.ufps.trainingcenter.account.SubmissionCountByDate;
-import co.ufps.trainingcenter.account.UserSubmission;
+import co.ufps.trainingcenter.domain.account.SubmissionCountByDate;
+import co.ufps.trainingcenter.domain.account.UserSubmission;
 import co.ufps.trainingcenter.application.port.out.UserSubmissionRepository;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
-import co.ufps.trainingcenter.account.UserId;
+import co.ufps.trainingcenter.domain.account.UserId;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;

@@ -1,6 +1,6 @@
-package co.ufps.trainingcenter.exercise;
+﻿package co.ufps.trainingcenter.domain.exercise;
 
-import co.ufps.trainingcenter.account.UserSubmissionId;
+import co.ufps.trainingcenter.domain.account.UserSubmissionId;
 
 import java.util.Objects;
 import java.util.UUID;

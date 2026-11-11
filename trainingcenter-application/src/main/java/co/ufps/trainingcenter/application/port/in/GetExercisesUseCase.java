@@ -1,6 +1,6 @@
-package co.ufps.trainingcenter.application.port.in;
+﻿package co.ufps.trainingcenter.application.port.in;
 
-import co.ufps.trainingcenter.exercise.Exercise;
+import co.ufps.trainingcenter.domain.exercise.Exercise;
 
 import java.util.List;
 

@@ -1,5 +1,5 @@
-package co.ufps.trainingcenter.contest;
-import co.ufps.trainingcenter.DomainException;
+package co.ufps.trainingcenter.domain.contest;
+import co.ufps.trainingcenter.domain.DomainException;
 
 import java.util.Objects;
 import java.util.UUID;

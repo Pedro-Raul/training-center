@@ -1,6 +1,6 @@
-package co.ufps.trainingcenter.persistence.exercise;
+﻿package co.ufps.trainingcenter.infrastructure.persistence.exercise;
 
-import co.ufps.trainingcenter.exercise.Difficulty;
+import co.ufps.trainingcenter.domain.exercise.Difficulty;
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
 

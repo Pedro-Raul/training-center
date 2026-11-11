@@ -1,10 +1,10 @@
-package co.ufps.trainingcenter.api.contest;
+﻿package co.ufps.trainingcenter.api.contest;
 
 import co.ufps.trainingcenter.api.common.PageResponse;
 import co.ufps.trainingcenter.api.common.QueryParams;
 import co.ufps.trainingcenter.application.port.in.SearchContestsUseCase;
 import co.ufps.trainingcenter.application.query.ContestFilter;
-import co.ufps.trainingcenter.contest.Status;
+import co.ufps.trainingcenter.domain.contest.Status;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
@@ -15,7 +15,7 @@ import jakarta.ws.rs.core.MediaType;
 import java.time.LocalDate;
 
 /**
- * Búsqueda de concursos con filtros y paginación.
+ * BÃºsqueda de concursos con filtros y paginaciÃ³n.
  */
 @Path("/api/contests/search")
 @Produces(MediaType.APPLICATION_JSON)

@@ -1,5 +1,5 @@
-
-package co.ufps.trainingcenter.persistence.account;
+﻿
+package co.ufps.trainingcenter.infrastructure.persistence.account;
 
 import jakarta.persistence.*;
 import java.time.LocalDate;

@@ -1,9 +1,9 @@
-package co.ufps.trainingcenter.account;
+﻿package co.ufps.trainingcenter.domain.account;
 
-import co.ufps.trainingcenter.account.UserId;
-import co.ufps.trainingcenter.account.Verdict;
-import co.ufps.trainingcenter.account.UserSubmissionId;
-import co.ufps.trainingcenter.exercise.ExerciseId;
+import co.ufps.trainingcenter.domain.account.UserId;
+import co.ufps.trainingcenter.domain.account.Verdict;
+import co.ufps.trainingcenter.domain.account.UserSubmissionId;
+import co.ufps.trainingcenter.domain.exercise.ExerciseId;
 
 import java.time.LocalDateTime;
 

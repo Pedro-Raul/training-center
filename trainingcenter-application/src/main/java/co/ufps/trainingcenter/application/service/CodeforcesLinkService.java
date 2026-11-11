@@ -1,10 +1,10 @@
-package co.ufps.trainingcenter.application.service;
+﻿package co.ufps.trainingcenter.application.service;
 
-import co.ufps.trainingcenter.DomainException;
-import co.ufps.trainingcenter.account.ExternalAccount;
-import co.ufps.trainingcenter.account.ExternalAccountAlreadyLinkedException;
-import co.ufps.trainingcenter.account.InvalidOidcStateException;
-import co.ufps.trainingcenter.account.UserId;
+import co.ufps.trainingcenter.domain.DomainException;
+import co.ufps.trainingcenter.domain.account.ExternalAccount;
+import co.ufps.trainingcenter.domain.account.ExternalAccountAlreadyLinkedException;
+import co.ufps.trainingcenter.domain.account.InvalidOidcStateException;
+import co.ufps.trainingcenter.domain.account.UserId;
 import co.ufps.trainingcenter.application.port.in.CompleteCodeforcesLinkUseCase;
 import co.ufps.trainingcenter.application.port.in.GetCodeforcesAccountUseCase;
 import co.ufps.trainingcenter.application.port.in.StartCodeforcesLinkUseCase;
@@ -23,8 +23,8 @@ import java.util.Optional;
 import jakarta.enterprise.context.ApplicationScoped;
 
 /**
- * Servicio de vinculación de cuentas de Codeforces.
- * Bean CDI @ApplicationScoped para que inyecte repositorios automáticamente.
+ * Servicio de vinculaciÃ³n de cuentas de Codeforces.
+ * Bean CDI @ApplicationScoped para que inyecte repositorios automÃ¡ticamente.
  */
 @ApplicationScoped
 public class CodeforcesLinkService implements StartCodeforcesLinkUseCase,

@@ -1,6 +1,6 @@
-package co.ufps.trainingcenter.api.error;
+﻿package co.ufps.trainingcenter.api.error;
 
-import co.ufps.trainingcenter.DomainException;
+import co.ufps.trainingcenter.domain.DomainException;
 import jakarta.ws.rs.core.Response;
 import jakarta.ws.rs.ext.ExceptionMapper;
 import jakarta.ws.rs.ext.Provider;

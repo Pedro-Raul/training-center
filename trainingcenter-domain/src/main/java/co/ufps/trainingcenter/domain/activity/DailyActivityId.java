@@ -1,7 +1,7 @@
-package co.ufps.trainingcenter.activity;
+﻿package co.ufps.trainingcenter.domain.activity;
 
 
-import co.ufps.trainingcenter.DomainException;
+import co.ufps.trainingcenter.domain.DomainException;
 
 import java.util.Objects;
 import java.util.UUID;
@@ -11,7 +11,7 @@ public final class DailyActivityId {
 
     private DailyActivityId(String value) {
         if (value == null || value.isBlank())
-            throw new DomainException("El dailyActivityId no puede estar vacío");
+            throw new DomainException("El dailyActivityId no puede estar vacÃ­o");
         this.value = value.strip();
     }
 

@@ -1,8 +1,8 @@
-package co.ufps.trainingcenter.application.service;
+﻿package co.ufps.trainingcenter.application.service;
 
-import co.ufps.trainingcenter.DomainException;
-import co.ufps.trainingcenter.account.UserId;
-import co.ufps.trainingcenter.account.UserSubmission;
+import co.ufps.trainingcenter.domain.DomainException;
+import co.ufps.trainingcenter.domain.account.UserId;
+import co.ufps.trainingcenter.domain.account.UserSubmission;
 import co.ufps.trainingcenter.application.port.in.SearchSubmissionsUseCase;
 import co.ufps.trainingcenter.application.port.out.UserSubmissionSearchRepository;
 import co.ufps.trainingcenter.application.query.PageRequest;
@@ -27,7 +27,7 @@ public class SubmissionSearchService implements SearchSubmissionsUseCase {
             throw new DomainException("El usuario es obligatorio");
         }
         if (filter == null || pageRequest == null) {
-            throw new DomainException("El filtro y la paginación son obligatorios");
+            throw new DomainException("El filtro y la paginaciÃ³n son obligatorios");
         }
         return repository.search(userId, filter, pageRequest);
     }

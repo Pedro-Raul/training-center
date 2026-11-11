@@ -1,9 +1,9 @@
-package co.ufps.trainingcenter.persistence.exercise;
+﻿package co.ufps.trainingcenter.infrastructure.persistence.exercise;
 
 import co.ufps.trainingcenter.application.port.out.ExerciseRepository;
-import co.ufps.trainingcenter.exercise.Difficulty;
-import co.ufps.trainingcenter.exercise.Exercise;
-import co.ufps.trainingcenter.exercise.ExerciseId;
+import co.ufps.trainingcenter.domain.exercise.Difficulty;
+import co.ufps.trainingcenter.domain.exercise.Exercise;
+import co.ufps.trainingcenter.domain.exercise.ExerciseId;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
@@ -59,7 +59,7 @@ public class ExerciseRepositoryJpa implements ExerciseRepository {
                 .collect(Collectors.toList());
     }
 
-    // ── Mapeo: Domain → JPA ──────────────────────────────────────────
+    // â”€â”€ Mapeo: Domain â†’ JPA â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
     private ExerciseJpa toEntity(Exercise exercise) {
         ExerciseJpa entity = new ExerciseJpa();
@@ -74,7 +74,7 @@ public class ExerciseRepositoryJpa implements ExerciseRepository {
         return entity;
     }
 
-    // ── Mapeo: JPA → Domain ──────────────────────────────────────────
+    // â”€â”€ Mapeo: JPA â†’ Domain â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
     private Exercise toDomain(ExerciseJpa entity) {
         return Exercise.restore(

@@ -1,8 +1,8 @@
-package co.ufps.trainingcenter.persistence.account;
+﻿package co.ufps.trainingcenter.infrastructure.persistence.account;
 
-import co.ufps.trainingcenter.account.User;
-import co.ufps.trainingcenter.account.UserId;
-import co.ufps.trainingcenter.account.UserProfile;
+import co.ufps.trainingcenter.domain.account.User;
+import co.ufps.trainingcenter.domain.account.UserId;
+import co.ufps.trainingcenter.domain.account.UserProfile;
 import co.ufps.trainingcenter.application.port.out.UserRepository;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.persistence.EntityManager;

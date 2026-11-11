@@ -1,10 +1,10 @@
-package co.ufps.trainingcenter.application.service;
+﻿package co.ufps.trainingcenter.application.service;
 
-import co.ufps.trainingcenter.DomainException;
-import co.ufps.trainingcenter.account.EmailAlreadyExistsException;
-import co.ufps.trainingcenter.account.User;
-import co.ufps.trainingcenter.account.UserId;
-import co.ufps.trainingcenter.account.UserProfile;
+import co.ufps.trainingcenter.domain.DomainException;
+import co.ufps.trainingcenter.domain.account.EmailAlreadyExistsException;
+import co.ufps.trainingcenter.domain.account.User;
+import co.ufps.trainingcenter.domain.account.UserId;
+import co.ufps.trainingcenter.domain.account.UserProfile;
 import co.ufps.trainingcenter.application.port.in.RegisterUserCommand;
 import co.ufps.trainingcenter.application.port.in.RegisterUserUseCase;
 import co.ufps.trainingcenter.application.port.out.PasswordHasher;
@@ -15,7 +15,7 @@ import java.util.Objects;
 
 /**
  * Servicio de registro de usuarios.
- * Bean CDI @ApplicationScoped para que inyecte repositorios automáticamente.
+ * Bean CDI @ApplicationScoped para que inyecte repositorios automÃ¡ticamente.
  */
 @ApplicationScoped
 public final class RegisterUserService implements RegisterUserUseCase {
@@ -42,7 +42,7 @@ public final class RegisterUserService implements RegisterUserUseCase {
             throw new DomainException("El nombre de usuario es obligatorio");
         }
         if (command.rawPassword() == null || command.rawPassword().isBlank()) {
-            throw new DomainException("La contraseña es obligatoria");
+            throw new DomainException("La contraseÃ±a es obligatoria");
         }
 
         if (userRepository.existsByEmail(command.email())) {

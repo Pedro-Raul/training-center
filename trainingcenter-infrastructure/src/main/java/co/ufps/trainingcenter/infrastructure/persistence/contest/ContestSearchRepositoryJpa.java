@@ -1,11 +1,11 @@
-package co.ufps.trainingcenter.persistence.contest;
+﻿package co.ufps.trainingcenter.infrastructure.persistence.contest;
 
 import co.ufps.trainingcenter.application.port.out.ContestSearchRepository;
 import co.ufps.trainingcenter.application.query.ContestFilter;
 import co.ufps.trainingcenter.application.query.PageRequest;
 import co.ufps.trainingcenter.application.query.PageResult;
-import co.ufps.trainingcenter.contest.Contest;
-import co.ufps.trainingcenter.persistence.QuerySupport;
+import co.ufps.trainingcenter.domain.contest.Contest;
+import co.ufps.trainingcenter.infrastructure.persistence.QuerySupport;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;

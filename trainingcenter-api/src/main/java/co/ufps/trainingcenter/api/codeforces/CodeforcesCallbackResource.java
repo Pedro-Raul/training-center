@@ -1,6 +1,6 @@
-package co.ufps.trainingcenter.api.codeforces;
+﻿package co.ufps.trainingcenter.api.codeforces;
 
-import co.ufps.trainingcenter.DomainException;
+import co.ufps.trainingcenter.domain.DomainException;
 import co.ufps.trainingcenter.application.port.in.CompleteCodeforcesLinkUseCase;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.GET;
@@ -27,7 +27,7 @@ public class CodeforcesCallbackResource {
             @QueryParam("error") String error) {
 
         if (error != null) {
-            throw new DomainException("Codeforces rechazó la autorización: " + error);
+            throw new DomainException("Codeforces rechazÃ³ la autorizaciÃ³n: " + error);
         }
         return CodeforcesLinkResource.ExternalAccountResponse.from(
                 completeLink.completeLink(code, state));

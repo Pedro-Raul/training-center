@@ -1,8 +1,8 @@
-package co.ufps.trainingcenter.persistence.activity;
+﻿package co.ufps.trainingcenter.infrastructure.persistence.activity;
 
-import co.ufps.trainingcenter.account.UserId;
-import co.ufps.trainingcenter.activity.DailyActivity;
-import co.ufps.trainingcenter.activity.DailyActivityId;
+import co.ufps.trainingcenter.domain.account.UserId;
+import co.ufps.trainingcenter.domain.activity.DailyActivity;
+import co.ufps.trainingcenter.domain.activity.DailyActivityId;
 import co.ufps.trainingcenter.application.port.out.DailyActivityRepository;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.persistence.EntityManager;
@@ -59,7 +59,7 @@ public class DailyActivityRepositoryJpa implements DailyActivityRepository {
                 .collect(Collectors.toList());
     }
 
-    // ── Mapeo: Domain → JPA ──────────────────────────────────────────
+    // â”€â”€ Mapeo: Domain â†’ JPA â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
     private DailyActivityJpa toEntity(DailyActivity activity) {
         DailyActivityJpa entity = new DailyActivityJpa();
@@ -71,7 +71,7 @@ public class DailyActivityRepositoryJpa implements DailyActivityRepository {
         return entity;
     }
 
-    // ── Mapeo: JPA → Domain ──────────────────────────────────────────
+    // â”€â”€ Mapeo: JPA â†’ Domain â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
     private DailyActivity toDomain(DailyActivityJpa entity) {
         return DailyActivity.restore(

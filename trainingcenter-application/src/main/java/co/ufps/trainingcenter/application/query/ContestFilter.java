@@ -1,7 +1,7 @@
-package co.ufps.trainingcenter.application.query;
+﻿package co.ufps.trainingcenter.application.query;
 
-import co.ufps.trainingcenter.DomainException;
-import co.ufps.trainingcenter.contest.Status;
+import co.ufps.trainingcenter.domain.DomainException;
+import co.ufps.trainingcenter.domain.contest.Status;
 
 import java.time.LocalDate;
 

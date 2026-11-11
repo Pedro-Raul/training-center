@@ -1,4 +1,4 @@
-package co.ufps.trainingcenter.contest;
+package co.ufps.trainingcenter.domain.contest;
 
 import java.time.LocalDateTime;
 

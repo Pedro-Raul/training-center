@@ -1,4 +1,4 @@
-package co.ufps.trainingcenter.account;
+﻿package co.ufps.trainingcenter.domain.account;
 
 import java.util.Objects;
 import java.util.UUID;
@@ -8,7 +8,7 @@ public class UserSubmissionId {
 
     private UserSubmissionId(String value) {
         if (value == null || value.isBlank()) {
-            throw new IllegalArgumentException("El UserSubmissionId no puede ser nulo o vacío");
+            throw new IllegalArgumentException("El UserSubmissionId no puede ser nulo o vacÃ­o");
         }
         this.value = value;
     }

@@ -1,6 +1,6 @@
-package co.ufps.trainingcenter.persistence.contest;
+﻿package co.ufps.trainingcenter.infrastructure.persistence.contest;
 
-import co.ufps.trainingcenter.contest.Status;
+import co.ufps.trainingcenter.domain.contest.Status;
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
 

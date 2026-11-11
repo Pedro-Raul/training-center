@@ -1,7 +1,7 @@
-package co.ufps.trainingcenter.external.codeforces;
+﻿package co.ufps.trainingcenter.infrastructure.external.codeforces;
 
-import co.ufps.trainingcenter.DomainException;
-import co.ufps.trainingcenter.account.OidcAuthenticationException;
+import co.ufps.trainingcenter.domain.DomainException;
+import co.ufps.trainingcenter.domain.account.OidcAuthenticationException;
 import co.ufps.trainingcenter.application.port.out.CodeforcesIdentity;
 import co.ufps.trainingcenter.application.port.out.CodeforcesOidcClient;
 import com.nimbusds.jose.JWSAlgorithm;
@@ -74,17 +74,17 @@ public class CodeforcesOidcClientAdapter implements CodeforcesOidcClient {
             JWTClaimsSet claims = verify(idToken.toString(), clientSecret);
 
             if (!d.issuer().equals(claims.getIssuer()))
-                throw new OidcAuthenticationException("Emisor del token inválido");
+                throw new OidcAuthenticationException("Emisor del token invÃ¡lido");
             if (claims.getAudience() == null || !claims.getAudience().contains(clientId))
-                throw new OidcAuthenticationException("Audiencia del token inválida");
+                throw new OidcAuthenticationException("Audiencia del token invÃ¡lida");
             Date exp = claims.getExpirationTime();
             if (exp == null || exp.before(new Date()))
-                throw new OidcAuthenticationException("El token expiró");
+                throw new OidcAuthenticationException("El token expirÃ³");
 
             // El nonce es opcional: solo se valida si Codeforces lo incluye en el token.
             String tokenNonce = claims.getStringClaim("nonce");
             if (tokenNonce != null && !tokenNonce.equals(expectedNonce))
-                throw new OidcAuthenticationException("Nonce inválido");
+                throw new OidcAuthenticationException("Nonce invÃ¡lido");
 
             LOG.info("Claims del id_token: " + claims.getClaims().keySet());
 
@@ -112,7 +112,7 @@ public class CodeforcesOidcClientAdapter implements CodeforcesOidcClient {
                     "Algoritmo de firma no soportado: " + jwt.getHeader().getAlgorithm());
         }
         if (!jwt.verify(new MACVerifier(clientSecret.getBytes(StandardCharsets.UTF_8)))) {
-            throw new OidcAuthenticationException("La firma del id_token es inválida");
+            throw new OidcAuthenticationException("La firma del id_token es invÃ¡lida");
         }
         return jwt.getJWTClaimsSet();
     }
@@ -139,15 +139,15 @@ public class CodeforcesOidcClientAdapter implements CodeforcesOidcClient {
         } catch (Exception e) {
             LOG.log(Level.SEVERE, "Fallo leyendo el discovery OIDC", e);
             throw new OidcAuthenticationException(
-                    "No se pudo leer la configuración OIDC de Codeforces: " + e);
+                    "No se pudo leer la configuraciÃ³n OIDC de Codeforces: " + e);
         }
     }
 
     private Map<String, Object> sendJson(HttpRequest request) throws Exception {
         HttpResponse<String> res = http.send(request, HttpResponse.BodyHandlers.ofString());
         if (res.statusCode() != 200) {
-            LOG.warning("Codeforces respondió " + res.statusCode() + ": " + res.body());
-            throw new OidcAuthenticationException("Codeforces respondió HTTP " + res.statusCode());
+            LOG.warning("Codeforces respondiÃ³ " + res.statusCode() + ": " + res.body());
+            throw new OidcAuthenticationException("Codeforces respondiÃ³ HTTP " + res.statusCode());
         }
         return JSONObjectUtils.parse(res.body());
     }

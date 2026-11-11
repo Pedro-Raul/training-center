@@ -1,9 +1,9 @@
-package co.ufps.trainingcenter.persistence.account;
+﻿package co.ufps.trainingcenter.infrastructure.persistence.account;
 
-import co.ufps.trainingcenter.account.UserId;
-import co.ufps.trainingcenter.account.UserSubmission;
-import co.ufps.trainingcenter.account.UserSubmissionId;
-import co.ufps.trainingcenter.exercise.ExerciseId;
+import co.ufps.trainingcenter.domain.account.UserId;
+import co.ufps.trainingcenter.domain.account.UserSubmission;
+import co.ufps.trainingcenter.domain.account.UserSubmissionId;
+import co.ufps.trainingcenter.domain.exercise.ExerciseId;
 
 public class UserSubmissionJpaMapper {
 

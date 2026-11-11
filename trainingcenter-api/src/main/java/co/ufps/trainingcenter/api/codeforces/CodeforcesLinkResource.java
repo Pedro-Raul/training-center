@@ -1,7 +1,7 @@
-package co.ufps.trainingcenter.api.codeforces;
+﻿package co.ufps.trainingcenter.api.codeforces;
 
-import co.ufps.trainingcenter.account.ExternalAccount;
-import co.ufps.trainingcenter.account.UserId;
+import co.ufps.trainingcenter.domain.account.ExternalAccount;
+import co.ufps.trainingcenter.domain.account.UserId;
 import co.ufps.trainingcenter.application.port.in.GetCodeforcesAccountUseCase;
 import co.ufps.trainingcenter.application.port.in.StartCodeforcesLinkUseCase;
 import jakarta.inject.Inject;

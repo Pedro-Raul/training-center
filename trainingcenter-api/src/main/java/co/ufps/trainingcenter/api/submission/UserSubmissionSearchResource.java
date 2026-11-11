@@ -1,8 +1,8 @@
-package co.ufps.trainingcenter.api.submission;
+﻿package co.ufps.trainingcenter.api.submission;
 
-import co.ufps.trainingcenter.account.UserId;
-import co.ufps.trainingcenter.account.UserSubmission;
-import co.ufps.trainingcenter.account.Verdict;
+import co.ufps.trainingcenter.domain.account.UserId;
+import co.ufps.trainingcenter.domain.account.UserSubmission;
+import co.ufps.trainingcenter.domain.account.Verdict;
 import co.ufps.trainingcenter.api.common.PageResponse;
 import co.ufps.trainingcenter.api.common.QueryParams;
 import co.ufps.trainingcenter.application.port.in.SearchSubmissionsUseCase;

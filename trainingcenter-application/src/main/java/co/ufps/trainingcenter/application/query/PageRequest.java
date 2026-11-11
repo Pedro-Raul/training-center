@@ -1,6 +1,6 @@
-package co.ufps.trainingcenter.application.query;
+﻿package co.ufps.trainingcenter.application.query;
 
-import co.ufps.trainingcenter.DomainException;
+import co.ufps.trainingcenter.domain.DomainException;
 
 public record PageRequest(int page, int size, String sortBy, SortDirection direction) {
 

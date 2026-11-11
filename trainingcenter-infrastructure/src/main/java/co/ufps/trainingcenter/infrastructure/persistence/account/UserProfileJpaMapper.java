@@ -1,8 +1,8 @@
-package co.ufps.trainingcenter.persistence.account;
+﻿package co.ufps.trainingcenter.infrastructure.persistence.account;
 
-import co.ufps.trainingcenter.account.UserId;
-import co.ufps.trainingcenter.account.UserProfile;
-import co.ufps.trainingcenter.account.UserProfileId;
+import co.ufps.trainingcenter.domain.account.UserId;
+import co.ufps.trainingcenter.domain.account.UserProfile;
+import co.ufps.trainingcenter.domain.account.UserProfileId;
 
 public final class UserProfileJpaMapper {
 

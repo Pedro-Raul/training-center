@@ -1,8 +1,8 @@
-package co.ufps.trainingcenter.persistence.activity;
+﻿package co.ufps.trainingcenter.infrastructure.persistence.activity;
 
-import co.ufps.trainingcenter.account.UserId;
-import co.ufps.trainingcenter.activity.DailyActivity;
-import co.ufps.trainingcenter.activity.DailyActivityId;
+import co.ufps.trainingcenter.domain.account.UserId;
+import co.ufps.trainingcenter.domain.activity.DailyActivity;
+import co.ufps.trainingcenter.domain.activity.DailyActivityId;
 
 public final class DailyActivityJpaMapper {
 

@@ -1,7 +1,7 @@
-package co.ufps.trainingcenter.account;
+﻿package co.ufps.trainingcenter.domain.account;
 
-import co.ufps.trainingcenter.DomainException;
-import co.ufps.trainingcenter.activity.DailyActivityId;
+import co.ufps.trainingcenter.domain.DomainException;
+import co.ufps.trainingcenter.domain.activity.DailyActivityId;
 
 import java.util.Objects;
 import java.util.UUID;
@@ -11,7 +11,7 @@ public final class UserProfileId {
 
         private UserProfileId(String value) {
             if (value == null || value.isBlank())
-                throw new DomainException("El profileId no puede estar vacío");
+                throw new DomainException("El profileId no puede estar vacÃ­o");
             this.value = value.strip();
         }
     public static UserProfileId generate() {

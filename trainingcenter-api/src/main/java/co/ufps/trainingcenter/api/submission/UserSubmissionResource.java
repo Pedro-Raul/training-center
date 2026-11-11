@@ -1,6 +1,6 @@
-package co.ufps.trainingcenter.api.submission;
+﻿package co.ufps.trainingcenter.api.submission;
 
-import co.ufps.trainingcenter.account.SubmissionCountByDate;
+import co.ufps.trainingcenter.domain.account.SubmissionCountByDate;
 import co.ufps.trainingcenter.application.port.in.GetSubmissionsByDateUseCase;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.GET;
@@ -9,7 +9,7 @@ import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.QueryParam;
 import jakarta.ws.rs.core.MediaType;
 
-import co.ufps.trainingcenter.account.UserId;
+import co.ufps.trainingcenter.domain.account.UserId;
 import jakarta.ws.rs.PathParam;
 import java.time.LocalDate;
 import java.util.List;

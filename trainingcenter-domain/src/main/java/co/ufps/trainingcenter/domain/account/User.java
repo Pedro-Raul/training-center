@@ -1,6 +1,6 @@
-package co.ufps.trainingcenter.account;
+﻿package co.ufps.trainingcenter.domain.account;
 
-import co.ufps.trainingcenter.DomainException;
+import co.ufps.trainingcenter.domain.DomainException;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
@@ -31,7 +31,7 @@ public class User {
             throw new DomainException("El email es obligatorio");
         }
         if (passwordHash == null || passwordHash.isBlank()) {
-            throw new DomainException("La contraseña es obligatoria");
+            throw new DomainException("La contraseÃ±a es obligatoria");
         }
         if (username == null || username.isBlank()) {
             throw new DomainException("El nombre del perfil es obligatorio");

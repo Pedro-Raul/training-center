@@ -1,7 +1,7 @@
-package co.ufps.trainingcenter.application.port.out;
+﻿package co.ufps.trainingcenter.application.port.out;
 
-import co.ufps.trainingcenter.account.ExternalAccount;
-import co.ufps.trainingcenter.account.UserId;
+import co.ufps.trainingcenter.domain.account.ExternalAccount;
+import co.ufps.trainingcenter.domain.account.UserId;
 
 import java.util.Optional;
 

@@ -1,8 +1,8 @@
-package co.ufps.trainingcenter.application.port.out;
+﻿package co.ufps.trainingcenter.application.port.out;
 
-import co.ufps.trainingcenter.account.SubmissionCountByDate;
-import co.ufps.trainingcenter.account.UserSubmission;
-import co.ufps.trainingcenter.account.UserId;
+import co.ufps.trainingcenter.domain.account.SubmissionCountByDate;
+import co.ufps.trainingcenter.domain.account.UserSubmission;
+import co.ufps.trainingcenter.domain.account.UserId;
 import java.time.LocalDateTime;
 import java.util.List;
 

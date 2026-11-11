@@ -1,7 +1,7 @@
-package co.ufps.trainingcenter.activity;
+﻿package co.ufps.trainingcenter.domain.activity;
 
-import co.ufps.trainingcenter.DomainException;
-import co.ufps.trainingcenter.account.UserId;
+import co.ufps.trainingcenter.domain.DomainException;
+import co.ufps.trainingcenter.domain.account.UserId;
 
 import java.time.LocalDate;
 import java.util.Objects;

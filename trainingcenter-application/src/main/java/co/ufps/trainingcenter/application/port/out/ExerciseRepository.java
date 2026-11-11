@@ -1,8 +1,8 @@
-package co.ufps.trainingcenter.application.port.out;
+﻿package co.ufps.trainingcenter.application.port.out;
 
-import co.ufps.trainingcenter.exercise.Difficulty;
-import co.ufps.trainingcenter.exercise.Exercise;
-import co.ufps.trainingcenter.exercise.ExerciseId;
+import co.ufps.trainingcenter.domain.exercise.Difficulty;
+import co.ufps.trainingcenter.domain.exercise.Exercise;
+import co.ufps.trainingcenter.domain.exercise.ExerciseId;
 
 import java.util.List;
 import java.util.Optional;

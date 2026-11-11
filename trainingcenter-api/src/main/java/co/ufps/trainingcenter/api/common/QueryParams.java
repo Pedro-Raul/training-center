@@ -1,6 +1,6 @@
-package co.ufps.trainingcenter.api.common;
+﻿package co.ufps.trainingcenter.api.common;
 
-import co.ufps.trainingcenter.DomainException;
+import co.ufps.trainingcenter.domain.DomainException;
 import co.ufps.trainingcenter.application.query.PageRequest;
 import co.ufps.trainingcenter.application.query.SortDirection;
 
@@ -27,7 +27,7 @@ public final class QueryParams {
         try {
             return Enum.valueOf(type, value.strip().toUpperCase(Locale.ROOT));
         } catch (IllegalArgumentException e) {
-            throw new DomainException("Valor inválido para '" + field + "': " + value
+            throw new DomainException("Valor invÃ¡lido para '" + field + "': " + value
                     + ". Permitidos: " + Arrays.toString(type.getEnumConstants()));
         }
     }

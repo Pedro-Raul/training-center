@@ -1,6 +1,6 @@
-package co.ufps.trainingcenter.api.user;
+﻿package co.ufps.trainingcenter.api.user;
 
-import co.ufps.trainingcenter.account.UserId;
+import co.ufps.trainingcenter.domain.account.UserId;
 import co.ufps.trainingcenter.application.port.in.RegisterUserCommand;
 import co.ufps.trainingcenter.application.port.in.RegisterUserUseCase;
 import jakarta.inject.Inject;
@@ -12,7 +12,7 @@ import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 
 /**
- * Endpoint REST para gestión de usuarios.
+ * Endpoint REST para gestiÃ³n de usuarios.
  */
 @Path("/api/users")
 @Produces(MediaType.APPLICATION_JSON)

@@ -1,7 +1,7 @@
-package co.ufps.trainingcenter.api.activity;
+﻿package co.ufps.trainingcenter.api.activity;
 
-import co.ufps.trainingcenter.account.UserId;
-import co.ufps.trainingcenter.activity.DailyActivity;
+import co.ufps.trainingcenter.domain.account.UserId;
+import co.ufps.trainingcenter.domain.activity.DailyActivity;
 import co.ufps.trainingcenter.application.port.in.GetDailyActivityMapUseCase;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.GET;

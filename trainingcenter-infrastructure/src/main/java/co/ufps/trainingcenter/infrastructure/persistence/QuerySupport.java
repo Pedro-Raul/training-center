@@ -1,6 +1,6 @@
-package co.ufps.trainingcenter.persistence;
+package co.ufps.trainingcenter.infrastructure.persistence;
 
-import co.ufps.trainingcenter.DomainException;
+import co.ufps.trainingcenter.domain.DomainException;
 import co.ufps.trainingcenter.application.query.PageRequest;
 import jakarta.persistence.TypedQuery;
 

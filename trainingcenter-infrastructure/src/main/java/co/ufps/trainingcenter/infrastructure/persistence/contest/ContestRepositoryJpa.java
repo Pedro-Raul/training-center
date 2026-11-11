@@ -1,9 +1,9 @@
-package co.ufps.trainingcenter.persistence.contest;
+﻿package co.ufps.trainingcenter.infrastructure.persistence.contest;
 
 import co.ufps.trainingcenter.application.port.out.ContestRepository;
-import co.ufps.trainingcenter.contest.Contest;
-import co.ufps.trainingcenter.contest.ContestId;
-import co.ufps.trainingcenter.contest.Status;
+import co.ufps.trainingcenter.domain.contest.Contest;
+import co.ufps.trainingcenter.domain.contest.ContestId;
+import co.ufps.trainingcenter.domain.contest.Status;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
