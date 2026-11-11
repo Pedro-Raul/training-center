@@ -22,6 +22,10 @@ import java.util.Objects;
 import java.util.Optional;
 import jakarta.enterprise.context.ApplicationScoped;
 
+/**
+ * Servicio de vinculación de cuentas de Codeforces.
+ * Bean CDI @ApplicationScoped para que inyecte repositorios automáticamente.
+ */
 @ApplicationScoped
 public class CodeforcesLinkService implements StartCodeforcesLinkUseCase,
         CompleteCodeforcesLinkUseCase, GetCodeforcesAccountUseCase {
