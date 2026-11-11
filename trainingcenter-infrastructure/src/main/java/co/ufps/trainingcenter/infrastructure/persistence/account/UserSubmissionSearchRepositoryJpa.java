@@ -6,7 +6,13 @@ import co.ufps.trainingcenter.application.port.out.UserSubmissionSearchRepositor
 import co.ufps.trainingcenter.application.query.PageRequest;
 import co.ufps.trainingcenter.application.query.PageResult;
 import co.ufps.trainingcenter.application.query.SubmissionFilter;
+<<<<<<< HEAD:trainingcenter-infrastructure/src/main/java/co/ufps/trainingcenter/infrastructure/persistence/account/UserSubmissionSearchRepositoryJpa.java
 import co.ufps.trainingcenter.infrastructure.persistence.QuerySupport;
+=======
+import co.ufps.trainingcenter.infrastructure.persistence.account.UserSubmissionJpa;
+import co.ufps.trainingcenter.infrastructure.persistence.account.UserSubmissionJpaMapper;
+import co.ufps.trainingcenter.persistence.QuerySupport;
+>>>>>>> 569d56e (Fixing Bugs):trainingcenter-infrastructure/src/main/java/co/ufps/trainingcenter/persistence/account/UserSubmissionSearchRepositoryJpa.java
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;

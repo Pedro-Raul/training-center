@@ -5,7 +5,12 @@ import co.ufps.trainingcenter.application.query.ContestFilter;
 import co.ufps.trainingcenter.application.query.PageRequest;
 import co.ufps.trainingcenter.application.query.PageResult;
 import co.ufps.trainingcenter.domain.contest.Contest;
+<<<<<<< HEAD:trainingcenter-infrastructure/src/main/java/co/ufps/trainingcenter/infrastructure/persistence/contest/ContestSearchRepositoryJpa.java
 import co.ufps.trainingcenter.infrastructure.persistence.QuerySupport;
+=======
+import co.ufps.trainingcenter.infrastructure.persistence.contest.ContestJpaMapper;
+import co.ufps.trainingcenter.persistence.QuerySupport;
+>>>>>>> 569d56e (Fixing Bugs):trainingcenter-infrastructure/src/main/java/co/ufps/trainingcenter/persistence/contest/ContestSearchRepositoryJpa.java
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;

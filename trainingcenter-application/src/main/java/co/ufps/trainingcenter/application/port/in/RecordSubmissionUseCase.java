@@ -1,14 +1,11 @@
 package co.ufps.trainingcenter.application.port.in;
 
 import co.ufps.trainingcenter.domain.account.UserId;
-import co.ufps.trainingcenter.domain.account.UserSubmission;
-import co.ufps.trainingcenter.domain.exercise.ExerciseId;
+import co.ufps.trainingcenter.domain.activity.DailyActivity;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 public interface RecordSubmissionUseCase {
 
-    UserSubmission recordSubmission(UserId userId, ExerciseId exerciseId,
-                                    String verdict, String language,
-                                    int executionTimeMs, LocalDateTime submittedAt);
+    DailyActivity recordSubmission(UserId userId, LocalDate date, boolean solved);
 }

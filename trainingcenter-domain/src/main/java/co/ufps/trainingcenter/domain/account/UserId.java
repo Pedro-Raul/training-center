@@ -1,6 +1,7 @@
 package co.ufps.trainingcenter.domain.account;
 
 import co.ufps.trainingcenter.domain.DomainException;
+import com.sun.jdi.Value;
 
 import java.util.Objects;
 import java.util.UUID;
@@ -11,7 +12,7 @@ public final class UserId{
 
     private UserId (String value) {
         if (value == null || value.isBlank()) {
-            throw new DomainException("UserId invalido: no puede estar vacio");
+            throw new DomainException("UserId inválido: no puede estar vacio");
         }
         this.value = value.strip();
     }

@@ -4,6 +4,8 @@ import co.ufps.trainingcenter.domain.account.User;
 import co.ufps.trainingcenter.domain.account.UserId;
 import co.ufps.trainingcenter.domain.account.UserProfile;
 import co.ufps.trainingcenter.application.port.out.UserRepository;
+import co.ufps.trainingcenter.infrastructure.persistence.account.UserJpa;
+import co.ufps.trainingcenter.infrastructure.persistence.account.UserJpaMapper;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;

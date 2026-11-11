@@ -1,5 +1,8 @@
 package co.ufps.trainingcenter.domain.contest;
 
+import co.ufps.trainingcenter.domain.contest.ContestId;
+import co.ufps.trainingcenter.domain.contest.Status;
+
 import java.time.LocalDateTime;
 
 public class Contest {
