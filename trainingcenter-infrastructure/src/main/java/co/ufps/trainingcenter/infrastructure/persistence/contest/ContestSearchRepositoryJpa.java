@@ -7,6 +7,7 @@ import co.ufps.trainingcenter.application.query.PageResult;
 import co.ufps.trainingcenter.domain.contest.Contest;
 import co.ufps.trainingcenter.infrastructure.persistence.QuerySupport;
 import co.ufps.trainingcenter.infrastructure.persistence.contest.ContestJpaMapper;
+import co.ufps.trainingcenter.infrastructure.external.codeforces.*;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
