@@ -20,7 +20,9 @@ import java.time.Instant;
 import java.util.Base64;
 import java.util.Objects;
 import java.util.Optional;
+import jakarta.enterprise.context.ApplicationScoped;
 
+@ApplicationScoped
 public class CodeforcesLinkService implements StartCodeforcesLinkUseCase,
         CompleteCodeforcesLinkUseCase, GetCodeforcesAccountUseCase {
 
