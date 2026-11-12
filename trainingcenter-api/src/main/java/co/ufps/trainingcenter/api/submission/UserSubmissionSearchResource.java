@@ -18,7 +18,7 @@ import jakarta.ws.rs.core.MediaType;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-@Path("/users/{userId}/submissions")
+@Path("/api/v1/users/{userId}/submissions")
 @Produces(MediaType.APPLICATION_JSON)
 public class UserSubmissionSearchResource {
 

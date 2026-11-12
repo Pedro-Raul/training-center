@@ -14,7 +14,7 @@ import java.util.List;
 /**
  * Endpoint REST para gestiÃ³n de concursos.
  */
-@Path("/api/contests")
+@Path("/api/v1/contests")
 @Produces(MediaType.APPLICATION_JSON)
 public class ContestResource {
 

@@ -14,7 +14,7 @@ import java.util.List;
 /**
  * Endpoint REST para consulta de ejercicios.
  */
-@Path("/api/exercises")
+@Path("/api/v1/exercises")
 @Produces(MediaType.APPLICATION_JSON)
 public class ExerciseResource {
 

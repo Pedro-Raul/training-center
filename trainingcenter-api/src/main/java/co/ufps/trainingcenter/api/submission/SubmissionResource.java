@@ -9,6 +9,8 @@ import co.ufps.trainingcenter.application.port.in.RecordSubmissionUseCase;
 import co.ufps.trainingcenter.application.port.out.UserSubmissionRepository;
 import co.ufps.trainingcenter.domain.exercise.ExerciseId;
 import jakarta.inject.Inject;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
@@ -22,13 +24,15 @@ import java.time.LocalDateTime;
 /**
  * Endpoint REST para registro de submissions.
  */
-@Path("/api/submissions")
+@Path("/api/v1/submissions")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class SubmissionResource {
 
     public record SubmissionCommand(
+            @NotBlank(message = "El ID del ejercicio es obligatorio")
             String exerciseId,
+            @NotNull(message = "El veredicto es obligatorio")
             Verdict verdict,
             String language,
             Integer executionTimeMs) {
@@ -66,7 +70,7 @@ public class SubmissionResource {
     @POST
     @Path("/{userId}")
     public SubmissionResponse record(@PathParam("userId") String userId,
-                                     SubmissionCommand command) {
+                                     @jakarta.validation.Valid SubmissionCommand command) {
         boolean solved = command.verdict() == Verdict.ACCEPTED;
 
         UserSubmission submission = new UserSubmission(

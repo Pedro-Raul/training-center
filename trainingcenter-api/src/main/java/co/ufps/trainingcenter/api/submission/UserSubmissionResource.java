@@ -14,7 +14,7 @@ import jakarta.ws.rs.PathParam;
 import java.time.LocalDate;
 import java.util.List;
 
-@Path("/users/{userId}/submissions/by-date")
+@Path("/api/v1/users/{userId}/submissions/by-date")
 @Produces(MediaType.APPLICATION_JSON)
 public class UserSubmissionResource {
 
