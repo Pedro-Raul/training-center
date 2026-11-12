@@ -1,5 +1,6 @@
 package co.ufps.trainingcenter.api.user;
 
+import co.ufps.trainingcenter.api.rate.RateLimit;
 import co.ufps.trainingcenter.domain.account.UserId;
 import co.ufps.trainingcenter.application.port.in.GetUserProfileUseCase;
 import co.ufps.trainingcenter.application.port.in.LoginUserCommand;
@@ -10,6 +11,10 @@ import co.ufps.trainingcenter.application.port.in.RegisterUserUseCase;
 import co.ufps.trainingcenter.application.port.in.UpdateProfileCommand;
 import co.ufps.trainingcenter.application.port.in.UpdateProfileUseCase;
 import jakarta.inject.Inject;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;
@@ -21,10 +26,10 @@ import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 
 /**
- * Endpoint REST para gestiÃ³n de usuarios.
- * Incluye registro, inicio de sesiÃ³n, consulta y actualizaciÃ³n de perfil.
+ * Endpoint REST para gestion de usuarios.
+ * Incluye registro, inicio de sesion, consulta y actualizacion de perfil.
  */
-@Path("/api/users")
+@Path("/api/v1/users")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class UserResource {
@@ -43,7 +48,13 @@ public class UserResource {
 
     // DTOs
 
-    public record LoginRequest(String email, String password) {
+    public record LoginRequest(
+            @NotBlank(message = "El email es obligatorio")
+            @Email(message = "El email debe tener un formato válido")
+            String email,
+            @NotBlank(message = "La contraseña es obligatoria")
+            String password
+    ) {
     }
 
     public record LoginResponse(
@@ -68,7 +79,11 @@ public class UserResource {
         }
     }
 
-    public record ProfileRequest(String username) {
+    public record ProfileRequest(
+            @NotBlank(message = "El nombre de usuario es obligatorio")
+            @Size(min = 3, max = 50, message = "El nombre de usuario debe tener entre 3 y 50 caracteres")
+            String username
+    ) {
     }
 
     public record ProfileResponse(
@@ -97,7 +112,8 @@ public class UserResource {
 
     @POST
     @Path("/register")
-    public Response register(RegisterUserCommand command) {
+    @RateLimit(maxRequests = 5, windowSeconds = 60)
+    public Response register(@Valid RegisterUserCommand command) {
         UserId userId = registerUserUseCase.register(command);
         return Response.status(Response.Status.CREATED)
                 .entity(userId.value())
@@ -106,7 +122,8 @@ public class UserResource {
 
     @POST
     @Path("/login")
-    public LoginResponse login(LoginRequest request) {
+    @RateLimit(maxRequests = 10, windowSeconds = 60)
+    public LoginResponse login(@Valid LoginRequest request) {
         LoginUserCommand command = new LoginUserCommand(request.email(), request.password());
         LoginUserResult result = loginUseCase.login(command);
         return LoginResponse.from(result);
@@ -121,7 +138,7 @@ public class UserResource {
 
     @PUT
     @Path("/{userId}/profile")
-    public ProfileResponse updateProfile(@PathParam("userId") String userId, ProfileRequest request) {
+    public ProfileResponse updateProfile(@PathParam("userId") String userId, @Valid ProfileRequest request) {
         UpdateProfileCommand command = new UpdateProfileCommand(UserId.of(userId), request.username());
         LoginUserResult result = updateProfileUseCase.updateProfile(command);
         return ProfileResponse.from(result);

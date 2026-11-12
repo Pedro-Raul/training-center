@@ -13,5 +13,7 @@ public interface ContestRepository {
         Contest save(Contest contest);
         Optional<Contest> findById(ContestId id);
         List<Contest> findByStatus(Status status);
+        void delete(ContestId id);
+
 
 }

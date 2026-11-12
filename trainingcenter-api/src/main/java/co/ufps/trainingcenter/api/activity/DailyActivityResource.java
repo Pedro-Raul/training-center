@@ -14,7 +14,7 @@ import jakarta.ws.rs.core.MediaType;
 import java.time.LocalDate;
 import java.util.List;
 
-@Path("/users/{userId}/daily-activity")
+@Path("/api/v1/users/{userId}/daily-activity")
 @Produces(MediaType.APPLICATION_JSON)
 public class DailyActivityResource {
 

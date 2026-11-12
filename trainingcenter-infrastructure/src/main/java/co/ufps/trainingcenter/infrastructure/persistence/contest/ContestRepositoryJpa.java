@@ -44,6 +44,14 @@ public class ContestRepositoryJpa implements ContestRepository {
                 .collect(Collectors.toList());
     }
 
+    @Override
+    @Transactional
+    public void delete(ContestId id) {
+        ContestJpa entity = entityManager.find(ContestJpa.class, id.value());
+        if (entity != null) {
+            entityManager.remove(entity);
+        }
+    }
 
 
     private ContestJpa toEntity(Contest contest) {

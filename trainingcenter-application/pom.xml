@@ -19,6 +19,11 @@
       <groupId>${project.groupId}</groupId>
       <artifactId>trainingcenter-domain</artifactId>
     </dependency>
+    <!-- Bean Validation API para anotaciones en comandos -->
+    <dependency>
+      <groupId>jakarta.validation</groupId>
+      <artifactId>jakarta.validation-api</artifactId>
+    </dependency>
       <dependency>
           <groupId>jakarta.enterprise</groupId>
           <artifactId>jakarta.enterprise.cdi-api</artifactId>
@@ -35,6 +40,10 @@
       <artifactId>mockito-junit-jupiter</artifactId>
       <version>5.14.2</version>
       <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>jakarta.transaction</groupId>
+      <artifactId>jakarta.transaction-api</artifactId>
     </dependency>
   </dependencies>
 </project>

@@ -15,7 +15,7 @@ import jakarta.ws.rs.core.MediaType;
 
 import java.time.LocalDateTime;
 
-@Path("/users/{userId}/codeforces")
+@Path("/api/v1/users/{userId}/codeforces")
 @Produces(MediaType.APPLICATION_JSON)
 public class CodeforcesLinkResource {
 

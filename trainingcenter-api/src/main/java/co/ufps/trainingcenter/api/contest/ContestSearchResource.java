@@ -17,7 +17,7 @@ import java.time.LocalDate;
 /**
  * BÃºsqueda de concursos con filtros y paginaciÃ³n.
  */
-@Path("/api/contests/search")
+@Path("/api/v1/contests/search")
 @Produces(MediaType.APPLICATION_JSON)
 public class ContestSearchResource {
 

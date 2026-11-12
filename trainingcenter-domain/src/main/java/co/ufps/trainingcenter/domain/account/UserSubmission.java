@@ -6,6 +6,7 @@ import co.ufps.trainingcenter.domain.account.UserSubmissionId;
 import co.ufps.trainingcenter.domain.exercise.ExerciseId;
 
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 public class UserSubmission {
     private final UserSubmissionId id;
@@ -54,5 +55,18 @@ public class UserSubmission {
 
     public LocalDateTime getSubmittedAt() {
         return submittedAt;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        UserSubmission that = (UserSubmission) o;
+        return Objects.equals(id, that.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(id);
     }
 }

@@ -53,8 +53,7 @@ public final class RegisterUserService implements RegisterUserUseCase {
         User user = User.register(
                 command.email(),
                 command.username(),
-                passwordHash,
-                command.username()
+                passwordHash
         );
         UserProfile profile = UserProfile.generate(user.getId());
 
