@@ -22,14 +22,12 @@ public class JpaOidcStateStore implements OidcStateStore {
     @PersistenceContext
     private EntityManager entityManager;
 
-    private final OidcStateJpaMapper mapper = new OidcStateJpaMapper();
-
     @Override
     @Transactional
     public void save(String state, PendingLink pending) {
         Instant expiresAt = Instant.now().plus(TTL);
         PendingLink withTtl = new PendingLink(pending.userId(), pending.nonce(), expiresAt);
-        OidcStateJpa entity = mapper.toJpa(state, withTtl);
+        OidcStateJpa entity = OidcStateJpaMapper.toJpa(state, withTtl);
         entityManager.persist(entity);
     }
 
@@ -44,7 +42,7 @@ public class JpaOidcStateStore implements OidcStateStore {
             entityManager.remove(entity);
             return Optional.empty();
         }
-        PendingLink pending = mapper.toPendingLink(entity);
+        PendingLink pending = OidcStateJpaMapper.toPendingLink(entity);
         entityManager.remove(entity);
         return Optional.of(pending);
     }

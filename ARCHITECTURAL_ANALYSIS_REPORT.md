@@ -1,4 +1,4 @@
-# Architectural Analysis Report — Training Center API
+pleme# Architectural Analysis Report — Training Center API
 
 > **Project**: Quarkus-based Competitive Programming Training Center  
 > **Architecture Style**: Clean Architecture / Domain-Driven Design (DDD)  

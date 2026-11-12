@@ -7,7 +7,7 @@ public final class OidcStateJpaMapper {
 
     private OidcStateJpaMapper() {}
 
-    public OidcStateJpa toJpa(String state, PendingLink pending) {
+    public static OidcStateJpa toJpa(String state, PendingLink pending) {
         OidcStateJpa entity = new OidcStateJpa();
         entity.setState(state);
         entity.setUserId(pending.userId().value());
@@ -16,7 +16,7 @@ public final class OidcStateJpaMapper {
         return entity;
     }
 
-    public PendingLink toPendingLink(OidcStateJpa entity) {
+    public static PendingLink toPendingLink(OidcStateJpa entity) {
         return new PendingLink(
                 UserId.of(entity.getUserId()),
                 entity.getNonce(),
