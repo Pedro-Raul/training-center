@@ -99,4 +99,32 @@ public class Contest {
     public int hashCode() {
         return Objects.hashCode(id);
     }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setPlatform(String platform) {
+        this.platform = platform;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public void setStartTime(LocalDateTime startTime) {
+        this.startTime = startTime;
+    }
+
+    public void setDurationSeconds(int durationSeconds) {
+        this.durationSeconds = durationSeconds;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
+
+    public void setCustom(boolean custom) {
+        isCustom = custom;
+    }
 }
