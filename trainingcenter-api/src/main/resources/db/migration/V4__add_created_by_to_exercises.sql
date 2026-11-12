@@ -1,0 +1,1 @@
+   ALTER TABLE exercises ADD COLUMN IF NOT EXISTS created_by VARCHAR(36) NULL;

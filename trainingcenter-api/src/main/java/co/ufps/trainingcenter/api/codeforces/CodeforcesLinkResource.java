@@ -1,6 +1,7 @@
 package co.ufps.trainingcenter.api.codeforces;
 
 import co.ufps.trainingcenter.domain.account.ExternalAccount;
+import co.ufps.trainingcenter.api.security.AuthenticatedUser;
 import co.ufps.trainingcenter.domain.account.UserId;
 import co.ufps.trainingcenter.application.port.in.GetCodeforcesAccountUseCase;
 import co.ufps.trainingcenter.application.port.in.StartCodeforcesLinkUseCase;
@@ -12,6 +13,9 @@ import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.Context;
+import jakarta.ws.rs.core.SecurityContext;
+import jakarta.ws.rs.ForbiddenException;
 
 import java.time.LocalDateTime;
 
@@ -37,6 +41,9 @@ public class CodeforcesLinkResource {
     private final StartCodeforcesLinkUseCase startLink;
     private final GetCodeforcesAccountUseCase getAccount;
 
+    @Context
+    private SecurityContext securityContext;
+
     @Inject
     public CodeforcesLinkResource(StartCodeforcesLinkUseCase startLink,
                                   GetCodeforcesAccountUseCase getAccount) {
@@ -46,14 +53,25 @@ public class CodeforcesLinkResource {
 
     @POST
     @Path("/link")
+    @AuthenticatedUser
     public LinkStartResponse start(@PathParam("userId") String userId) {
+        ensureAuthenticatedUser(userId);
         return new LinkStartResponse(startLink.startLink(UserId.of(userId)));
     }
 
     @GET
+    @AuthenticatedUser
     public ExternalAccountResponse get(@PathParam("userId") String userId) {
+        ensureAuthenticatedUser(userId);
         return getAccount.getByUserId(UserId.of(userId))
                 .map(ExternalAccountResponse::from)
                 .orElseThrow(() -> NotFoundException.of("Cuenta Codeforces", userId));
+    }
+
+    private void ensureAuthenticatedUser(String requestedUserId) {
+        if (securityContext == null || securityContext.getUserPrincipal() == null
+                || !requestedUserId.equals(securityContext.getUserPrincipal().getName())) {
+            throw new ForbiddenException("No puedes operar sobre la cuenta de otro usuario.");
+        }
     }
 }

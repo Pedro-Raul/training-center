@@ -96,15 +96,15 @@ public class RateLimitFilter implements ContainerRequestFilter {
         if (currentCount > maxRequests) {
             counters.remove(clientIp);
             requestContext.abortWith(
-                Response.status(Response.Status.TOO_MANY_REQUESTS)
-                    .header("Retry-After", String.valueOf(windowSeconds))
-                    .entity(Map.of(
-                        "error", "rate_limit_exceeded",
-                        "message", "Demasiadas solicitudes. Intente nuevamente en " + windowSeconds + " segundos.",
-                        "maxRequests", maxRequests,
-                        "windowSeconds", windowSeconds
-                    ))
-                    .build()
+                    Response.status(Response.Status.TOO_MANY_REQUESTS)
+                            .header("Retry-After", String.valueOf(windowSeconds))
+                            .entity(Map.of(
+                                    "error", "rate_limit_exceeded",
+                                    "message", "Demasiadas solicitudes. Intente nuevamente en " + windowSeconds + " segundos.",
+                                    "maxRequests", maxRequests,
+                                    "windowSeconds", windowSeconds
+                            ))
+                            .build()
             );
             return;
         }
@@ -135,7 +135,7 @@ public class RateLimitFilter implements ContainerRequestFilter {
      */
     private void cleanupExpiredEntries(long now, long windowMillis) {
         counters.entrySet().removeIf(entry ->
-            (now - entry.getValue().getWindowStart()) > windowMillis
+                (now - entry.getValue().getWindowStart()) > windowMillis
         );
     }
 }

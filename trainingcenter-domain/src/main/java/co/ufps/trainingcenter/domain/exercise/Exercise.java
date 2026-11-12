@@ -1,6 +1,8 @@
 package co.ufps.trainingcenter.domain.exercise;
 
 import java.time.LocalDateTime;
+import co.ufps.trainingcenter.domain.DomainException;
+import co.ufps.trainingcenter.domain.account.UserId;
 import java.util.Objects;
 
 public class Exercise {
@@ -12,6 +14,7 @@ public class Exercise {
     private String platform;
     private String externalUrl;
     private LocalDateTime createdAt;
+    private UserId createdBy;
 
     private Exercise(ExerciseId id, String title, String topic, Difficulty difficulty,
                      int difficultyRating, String platform, String externalUrl) {
@@ -47,6 +50,39 @@ public class Exercise {
         return exercise;
     }
 
+    /**
+     * Factory method para crear un ejercicio con creador.
+     * El creador debe venir de la identidad autenticada, nunca del cliente.
+     */
+    public static Exercise createBy(UserId creator, String title, String topic, Difficulty difficulty,
+                                    int difficultyRating, String platform, String externalUrl) {
+        if (creator == null) throw new DomainException("El creador del ejercicio es obligatorio");
+        requireText(title, 255, "title");
+        requireText(topic, 50, "topic");
+        requireText(platform, 50, "platform");
+        requireText(externalUrl, 500, "externalUrl");
+        if (difficulty == null) throw new DomainException("La dificultad es obligatoria");
+        if (difficultyRating < 0) throw new DomainException("difficultyRating no puede ser negativo");
+
+        Exercise exercise = new Exercise(ExerciseId.generate(), title.strip(), topic.strip(), difficulty,
+                difficultyRating, platform.strip(), externalUrl.strip());
+        exercise.createdBy = creator;
+        return exercise;
+    }
+
+    /**
+     * Restaura un ejercicio desde la base de datos incluyendo su creador
+     * (puede ser null en los ejercicios históricos).
+     */
+    public static Exercise restore(ExerciseId id, String title, String topic, Difficulty difficulty,
+                                   int difficultyRating, String platform, String externalUrl,
+                                   LocalDateTime createdAt, UserId createdBy) {
+        Exercise exercise = restore(id, title, topic, difficulty, difficultyRating,
+                platform, externalUrl, createdAt);
+        exercise.createdBy = createdBy;
+        return exercise;
+    }
+
     public ExerciseId getId() {
         return id;
     }
@@ -79,6 +115,12 @@ public class Exercise {
         return createdAt;
     }
 
+    public UserId getCreatedBy() { return createdBy; }
+
+    public boolean isOwnedBy(UserId user) {
+        return createdBy != null && createdBy.equals(user);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -91,4 +133,12 @@ public class Exercise {
     public int hashCode() {
         return Objects.hashCode(id);
     }
+
+    private static void requireText(String value, int maxLength, String field) {
+        if (value == null || value.isBlank())
+            throw new DomainException("El campo '" + field + "' es obligatorio");
+        if (value.strip().length() > maxLength)
+            throw new DomainException("El campo '" + field + "' no puede superar " + maxLength + " caracteres");
+    }
+
 }

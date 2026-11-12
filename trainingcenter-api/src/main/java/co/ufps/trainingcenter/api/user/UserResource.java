@@ -1,6 +1,8 @@
 package co.ufps.trainingcenter.api.user;
 
 import co.ufps.trainingcenter.api.rate.RateLimit;
+import co.ufps.trainingcenter.api.security.AuthenticatedUser;
+import co.ufps.trainingcenter.application.port.in.IssueAccessTokenUseCase;
 import co.ufps.trainingcenter.domain.account.UserId;
 import co.ufps.trainingcenter.application.port.in.GetUserProfileUseCase;
 import co.ufps.trainingcenter.application.port.in.LoginUserCommand;
@@ -10,6 +12,7 @@ import co.ufps.trainingcenter.application.port.in.RegisterUserCommand;
 import co.ufps.trainingcenter.application.port.in.RegisterUserUseCase;
 import co.ufps.trainingcenter.application.port.in.UpdateProfileCommand;
 import co.ufps.trainingcenter.application.port.in.UpdateProfileUseCase;
+import io.quarkus.security.Authenticated;
 import jakarta.inject.Inject;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;
@@ -24,6 +27,9 @@ import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
+import jakarta.ws.rs.core.Context;
+import jakarta.ws.rs.core.SecurityContext;
+import jakarta.ws.rs.ForbiddenException;
 
 /**
  * Endpoint REST para gestion de usuarios.
@@ -46,6 +52,12 @@ public class UserResource {
     @Inject
     private UpdateProfileUseCase updateProfileUseCase;
 
+    @Inject
+    private IssueAccessTokenUseCase issueAccessTokenUseCase;
+
+    @Context
+    private SecurityContext securityContext;
+
     // DTOs
 
     public record LoginRequest(
@@ -64,9 +76,10 @@ public class UserResource {
             int rating,
             int currentStreak,
             int maxStreak,
-            int problemsSolvedCount
+            int problemsSolvedCount,
+            String token
     ) {
-        static LoginResponse from(LoginUserResult result) {
+        static LoginResponse from(LoginUserResult result, String token) {
             return new LoginResponse(
                     result.userId(),
                     result.email(),
@@ -74,7 +87,8 @@ public class UserResource {
                     result.rating(),
                     result.currentStreak(),
                     result.maxStreak(),
-                    result.problemsSolvedCount()
+                    result.problemsSolvedCount(),
+                    token
             );
         }
     }
@@ -126,21 +140,33 @@ public class UserResource {
     public LoginResponse login(@Valid LoginRequest request) {
         LoginUserCommand command = new LoginUserCommand(request.email(), request.password());
         LoginUserResult result = loginUseCase.login(command);
-        return LoginResponse.from(result);
+        String token = issueAccessTokenUseCase.issueAccessToken(result.userId());
+        return LoginResponse.from(result, token);
     }
 
     @GET
     @Path("/{userId}/profile")
+    @AuthenticatedUser
     public ProfileResponse getProfile(@PathParam("userId") String userId) {
+        ensureAuthenticatedUser(userId);
         LoginUserResult result = getUserProfileUseCase.getUserProfile(UserId.of(userId));
         return ProfileResponse.from(result);
     }
 
     @PUT
     @Path("/{userId}/profile")
+    @AuthenticatedUser
     public ProfileResponse updateProfile(@PathParam("userId") String userId, @Valid ProfileRequest request) {
+        ensureAuthenticatedUser(userId);
         UpdateProfileCommand command = new UpdateProfileCommand(UserId.of(userId), request.username());
         LoginUserResult result = updateProfileUseCase.updateProfile(command);
         return ProfileResponse.from(result);
+    }
+
+    private void ensureAuthenticatedUser(String requestedUserId) {
+        if (securityContext == null || securityContext.getUserPrincipal() == null
+                || !requestedUserId.equals(securityContext.getUserPrincipal().getName())) {
+            throw new ForbiddenException("No puedes acceder al perfil de otro usuario.");
+        }
     }
 }

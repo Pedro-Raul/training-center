@@ -8,6 +8,7 @@ import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.transaction.Transactional;
+import co.ufps.trainingcenter.domain.account.UserId;
 
 import java.util.List;
 import java.util.Optional;
@@ -27,6 +28,15 @@ public class ExerciseRepositoryJpa implements ExerciseRepository {
     public Exercise save(Exercise exercise) {
         entityManager.merge(toEntity(exercise));
         return exercise;
+    }
+
+    @Override
+    @Transactional
+    public void deleteById(ExerciseId id) {
+        ExerciseJpa entity = entityManager.find(ExerciseJpa.class, id.value());
+        if (entity != null) {
+            entityManager.remove(entity);
+        }
     }
 
     @Override
@@ -71,6 +81,7 @@ public class ExerciseRepositoryJpa implements ExerciseRepository {
         entity.setPlatform(exercise.getPlatform());
         entity.setExternalUrl(exercise.getExternalUrl());
         entity.setCreatedAt(exercise.getCreatedAt());
+        entity.setCreatedBy(exercise.getCreatedBy() == null ? null : exercise.getCreatedBy().value());
         return entity;
     }
 
@@ -85,7 +96,8 @@ public class ExerciseRepositoryJpa implements ExerciseRepository {
                 entity.getDifficultyRating(),
                 entity.getPlatform(),
                 entity.getExternalUrl(),
-                entity.getCreatedAt()
+                entity.getCreatedAt(),
+                entity.getCreatedBy() == null ? null : UserId.of(entity.getCreatedBy())
         );
     }
 }

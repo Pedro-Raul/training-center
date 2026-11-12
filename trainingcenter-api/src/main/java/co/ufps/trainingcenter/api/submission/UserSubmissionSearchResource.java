@@ -1,5 +1,6 @@
 package co.ufps.trainingcenter.api.submission;
 
+import co.ufps.trainingcenter.api.security.AuthenticatedUser;
 import co.ufps.trainingcenter.domain.account.UserId;
 import co.ufps.trainingcenter.domain.account.UserSubmission;
 import co.ufps.trainingcenter.domain.account.Verdict;
@@ -14,6 +15,9 @@ import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.QueryParam;
 import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.Context;
+import jakarta.ws.rs.core.SecurityContext;
+import jakarta.ws.rs.ForbiddenException;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -21,6 +25,9 @@ import java.time.LocalDateTime;
 @Path("/api/v1/users/{userId}/submissions")
 @Produces(MediaType.APPLICATION_JSON)
 public class UserSubmissionSearchResource {
+
+    @Context
+    private SecurityContext securityContext;
 
     public record SubmissionResponse(String id, String exerciseId, Verdict verdict, String language,
                                      int executionTimeMs, LocalDateTime submittedAt) {
@@ -39,6 +46,7 @@ public class UserSubmissionSearchResource {
     }
 
     @GET
+    @AuthenticatedUser
     public PageResponse<SubmissionResponse> search(
             @PathParam("userId") String userId,
             @QueryParam("verdict") String verdict,
@@ -51,6 +59,7 @@ public class UserSubmissionSearchResource {
             @QueryParam("sort") String sort,
             @QueryParam("direction") String direction) {
 
+        ensureAuthenticatedUser(userId);
         SubmissionFilter filter = new SubmissionFilter(
                 QueryParams.parseEnum(Verdict.class, "verdict", verdict),
                 language, exerciseId, from, to);
@@ -59,5 +68,12 @@ public class UserSubmissionSearchResource {
                 searchSubmissions.search(UserId.of(userId), filter,
                                 QueryParams.pageRequest(page, size, sort, direction))
                         .map(SubmissionResponse::from));
+    }
+
+    private void ensureAuthenticatedUser(String requestedUserId) {
+        if (securityContext == null || securityContext.getUserPrincipal() == null
+                || !requestedUserId.equals(securityContext.getUserPrincipal().getName())) {
+            throw new ForbiddenException("No puedes consultar los envíos de otro usuario.");
+        }
     }
 }

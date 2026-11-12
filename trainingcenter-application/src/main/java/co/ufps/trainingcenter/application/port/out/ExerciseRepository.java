@@ -19,4 +19,6 @@ public interface ExerciseRepository {
     List<Exercise> findByDifficulty(Difficulty difficulty);
 
     List<Exercise> findByTopic(String topic);
+
+    void deleteById(ExerciseId id);
 }

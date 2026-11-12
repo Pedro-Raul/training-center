@@ -34,6 +34,13 @@ public class ExerciseJpa {
     @Column(name = "created_at")
     private LocalDateTime createdAt;
 
+    @Column(name = "created_by", length = 36)
+    private String createdBy;
+
+    public String getCreatedBy() { return createdBy; }
+
+    public void setCreatedBy(String createdBy) { this.createdBy = createdBy; }
+
     // Constructor requerido por JPA
     public ExerciseJpa() {}
 
