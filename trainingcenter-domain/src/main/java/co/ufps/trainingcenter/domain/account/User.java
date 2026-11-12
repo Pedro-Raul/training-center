@@ -26,12 +26,12 @@ public class User {
         this.createdAt = Objects.requireNonNullElseGet(createdAt, LocalDateTime::now);
     }
 
-    public static User register(String email, String username, String passwordHash, String initialProfileName) {
+    public static User register(String email, String username, String passwordHash) {
         if (email == null || email.isBlank()) {
             throw new DomainException("El email es obligatorio");
         }
         if (passwordHash == null || passwordHash.isBlank()) {
-            throw new DomainException("La contraseÃ±a es obligatoria");
+            throw new DomainException("La contraseña es obligatoria");
         }
         if (username == null || username.isBlank()) {
             throw new DomainException("El nombre del perfil es obligatorio");
@@ -51,5 +51,18 @@ public class User {
     public String getPasswordHash() { return passwordHash; }
     public Role getRole() { return role; }
     public LocalDateTime getCreatedAt() { return createdAt; }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return Objects.equals(id, user.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(id);
+    }
 }
 

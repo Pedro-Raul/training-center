@@ -11,7 +11,7 @@ class UserTest {
 
     @Test
     void shouldRegisterUserSuccessfully() {
-        User user = User.register("test@example.com", "testuser", "hashed123", "testuser");
+        User user = User.register("test@example.com", "testuser", "hashed123");
 
         assertNotNull(user.getId());
         assertEquals("test@example.com", user.getEmail());
@@ -24,28 +24,28 @@ class UserTest {
     @Test
     void shouldThrowExceptionForNullEmail() {
         assertThrows(DomainException.class, () ->
-                User.register(null, "testuser", "hashed123", "testuser")
+                User.register(null, "testuser", "hashed123")
         );
     }
 
     @Test
     void shouldThrowExceptionForBlankEmail() {
         assertThrows(DomainException.class, () ->
-                User.register("  ", "testuser", "hashed123", "testuser")
+                User.register("  ", "testuser", "hashed123")
         );
     }
 
     @Test
     void shouldThrowExceptionForNullPasswordHash() {
         assertThrows(DomainException.class, () ->
-                User.register("test@example.com", "testuser", null, "testuser")
+                User.register("test@example.com", "testuser", null)
         );
     }
 
     @Test
     void shouldThrowExceptionForBlankUsername() {
         assertThrows(DomainException.class, () ->
-                User.register("test@example.com", "", "hashed123", "testuser")
+                User.register("test@example.com", "", "hashed123")
         );
     }
 }

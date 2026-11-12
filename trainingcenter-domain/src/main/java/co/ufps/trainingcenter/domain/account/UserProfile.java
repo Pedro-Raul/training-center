@@ -71,4 +71,17 @@ public class UserProfile {
         maxStreak = Math.max(maxStreak, currentStreak);
         lastActivityDate = activityDate;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        UserProfile that = (UserProfile) o;
+        return Objects.equals(profileId, that.profileId);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(profileId);
+    }
 }

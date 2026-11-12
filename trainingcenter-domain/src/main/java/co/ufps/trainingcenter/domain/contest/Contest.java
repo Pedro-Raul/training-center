@@ -4,6 +4,7 @@ import co.ufps.trainingcenter.domain.contest.ContestId;
 import co.ufps.trainingcenter.domain.contest.Status;
 
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 public class Contest {
 
@@ -84,5 +85,18 @@ public class Contest {
 
     public boolean isCustom() {
         return isCustom;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Contest contest = (Contest) o;
+        return Objects.equals(id, contest.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(id);
     }
 }

@@ -1,6 +1,7 @@
 package co.ufps.trainingcenter.domain.exercise;
 
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 public class Exercise {
     private final ExerciseId id;
@@ -76,5 +77,18 @@ public class Exercise {
 
     public LocalDateTime getCreatedAt() {
         return createdAt;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Exercise exercise = (Exercise) o;
+        return Objects.equals(id, exercise.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(id);
     }
 }

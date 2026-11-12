@@ -69,4 +69,17 @@ public class ExternalAccount {
     public String getHandle() { return handle; }
     public int getPlatformRating() { return platformRating; }
     public LocalDateTime getLastSyncedAt() { return lastSyncedAt; }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ExternalAccount that = (ExternalAccount) o;
+        return Objects.equals(accountId, that.accountId);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(accountId);
+    }
 }
