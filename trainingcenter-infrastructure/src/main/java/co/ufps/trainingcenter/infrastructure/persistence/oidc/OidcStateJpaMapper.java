@@ -5,7 +5,7 @@ import co.ufps.trainingcenter.domain.account.UserId;
 
 public final class OidcStateJpaMapper {
 
-    private OidcStateJpaMapper() {}
+    public OidcStateJpaMapper() {}
 
     public OidcStateJpa toJpa(String state, PendingLink pending) {
         OidcStateJpa entity = new OidcStateJpa();

@@ -6,7 +6,7 @@ import co.ufps.trainingcenter.application.port.in.GetCodeforcesAccountUseCase;
 import co.ufps.trainingcenter.application.port.in.StartCodeforcesLinkUseCase;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.GET;
-import jakarta.ws.rs.NotFoundException;
+import co.ufps.trainingcenter.domain.NotFoundException;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
@@ -54,6 +54,6 @@ public class CodeforcesLinkResource {
     public ExternalAccountResponse get(@PathParam("userId") String userId) {
         return getAccount.getByUserId(UserId.of(userId))
                 .map(ExternalAccountResponse::from)
-                .orElseThrow(NotFoundException::new);
+                .orElseThrow(() -> NotFoundException.of("Cuenta Codeforces", userId));
     }
 }
