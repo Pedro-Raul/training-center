@@ -1,9 +1,9 @@
 package co.ufps.trainingcenter.infrastructure.external.codeforces;
 
-import co.ufps.trainingcenter.domain.DomainException;
-import co.ufps.trainingcenter.domain.account.OidcAuthenticationException;
 import co.ufps.trainingcenter.application.port.out.CodeforcesIdentity;
 import co.ufps.trainingcenter.application.port.out.CodeforcesOidcClient;
+import co.ufps.trainingcenter.domain.DomainException;
+import co.ufps.trainingcenter.domain.account.OidcAuthenticationException;
 import com.nimbusds.jose.JWSAlgorithm;
 import com.nimbusds.jose.crypto.MACVerifier;
 import com.nimbusds.jose.util.JSONObjectUtils;
@@ -22,8 +22,7 @@ import java.util.Date;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import com.nimbusds.jose.crypto.MACVerifier;
-import com.nimbusds.jose.crypto.MACVerifier;
+
 /**
  * Cliente OIDC de Codeforces. El id_token se firma con HS256 usando el
  * client_secret como llave (el discovery no publica jwks_uri).

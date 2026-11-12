@@ -48,6 +48,11 @@
       <groupId>io.quarkus</groupId>
       <artifactId>quarkus-jdbc-mariadb</artifactId>
     </dependency>
+    <!-- Scheduler para limpieza periódica de estados OIDC vencidos -->
+    <dependency>
+      <groupId>io.quarkus</groupId>
+      <artifactId>quarkus-scheduler</artifactId>
+    </dependency>
     <!-- BCrypt para hashing de contraseñas -->
     <dependency>
       <groupId>at.favre.lib</groupId>
