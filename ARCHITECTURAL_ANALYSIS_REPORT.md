@@ -303,7 +303,11 @@ quarkus.hibernate-orm.schema-management.strategy = none
 | No rate limiting | All endpoints unlimited | Add rate limiting for auth endpoints |
 | No input validation | Command objects lack `@Valid` | Add Bean Validation annotations |
 
+### 7.6 🟡 MEDIUM: Missing Error Handling
 
+- **No global exception mapper**: No `@Provider` class for `ExceptionMapper<Exception>`
+- **No standardized error response**: No `ErrorResponse` DTO with error code, message, details
+- **DomainException not mapped**: `DomainException` will return generic 500 errors
 
 ### 7.7 🟢 LOW: Minor Issues
 
